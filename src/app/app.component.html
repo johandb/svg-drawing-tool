@@ -130,7 +130,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="row">
                 <div class="col-md-3">Mouse at : {{ currentPosition.x }},{{currentPosition.y}}</div>
                 <div class="col-md-3">Selected Shape : {{ this.shapeValue }}</div>
@@ -142,6 +142,61 @@
                     <ng-template svg-dynamic [data]="shape"></ng-template>
                 </ng-container>
             </svg>
+        </div>
+        <div class="col-md-2 tools nopadding">
+            <div class="panel-group" id="accordion" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#properties"
+                                aria-expanded="false" aria-controls="properties">
+                                Shape Inspector
+                            </a>
+                        </div>
+                    </div>
+                    <div id="properties" data-parent="#accordion" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row nopadding">
+                                <div class="col-md-12">
+                                    <form class="form-horizontal">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" [(ngModel)]="shapeProperties.stroke" name="stroke"
+                                                    checked="{{shapeProperties.stroke}}">
+                                                Stroke</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control color-text" [(ngModel)]="shapeProperties.strokeColor"
+                                                name="strokeColor" value="{{shapeProperties.strokeColor}}"
+                                                [(colorPicker)]="shapeProperties.strokeColor" [cpOKButton]="true"
+                                                [cpCancelButton]="true" [style.background]="shapeProperties.strokeColor"
+                                                [cpOutputFormat]="hex" />
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" [(ngModel)]="shapeProperties.fill" name="fill"
+                                                    checked="shapeProperties.fill"> Fill</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control color-text" [(ngModel)]="shapeProperties.fillColor"
+                                                name="fillColor" value="{{shapeProperties.fillColor}}" [(colorPicker)]="shapeProperties.fillColor"
+                                                [cpOKButton]="true" [cpCancelButton]="true" [style.background]="shapeProperties.fillColor"
+                                                [cpOutputFormat]="hex" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputState">Size in px</label>
+                                            <select id="inputState" class="form-control" [(ngModel)]="shapeProperties.strokeWidth"
+                                                name="strokeWidth" value="{{shapeProperties.strokeWidth}}">
+                                                <ng-container *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
+                                                    <option>{{ i }}</option>
+                                                </ng-container>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
