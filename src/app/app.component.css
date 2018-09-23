@@ -1,0 +1,104 @@
+svg {
+    background: whitesmoke;
+    width: 934px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.header {
+    background-color: #f0f5e1;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+h1 {
+    color: #80b944;
+    padding-top: 20px;
+}
+
+.shape {
+    margin: 5px 1px 5px 10px;
+}
+
+.tools {
+    background-color: whitesmoke;
+}
+
+.color-text {
+    font-weight: bolder;
+    color: white;
+}
+
+.panel-body:target {
+    height: auto;
+}
+
+/* .panel-body ul {
+    list-style: none;
+    padding-left: 0;
+    padding: 0;
+    margin: 0;
+}    
+
+.panel-body ul li {
+    background-color: #eee;
+    margin-bottom: 1px;
+    padding-left: 5px;
+    cursor: pointer;
+}   */
+
+.panel-body select {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    background-color: #eee;
+}
+
+.panel-heading .accordion-toggle:after {
+    font-family: FontAwesome;
+    content:"\f068"; 
+    float: right;   
+    margin: 0;
+}
+
+.panel-heading .accordion-toggle.collapsed:after {
+    float: right !important;
+    content:"\f067";
+}
+
+.panel-title {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #80b944;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 18px;
+    margin-bottom: 1px;
+    padding: 10px 10px;
+}
+
+.panel-title:hover {
+    background-color: #609944;
+}
+
+.panel-title a { 
+    text-decoration: none;
+    color: white;
+}
+
+.panel-title > a:hover, 
+.panel-title > a:active, 
+.panel-title > a:focus  {
+    text-decoration:none;
+}
+
