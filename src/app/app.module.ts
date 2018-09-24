@@ -14,6 +14,7 @@ import { ShapeComponent } from './components/shape/shape.component';
 import { SquareComponent } from './components/square/square.component';
 import { EllipseComponent } from './components/ellipse/ellipse.component';
 import { TextComponent } from './components/text/text.component';
+import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { TextComponent } from './components/text/text.component';
         ShapeComponent,
         SquareComponent,
         EllipseComponent,
-        TextComponent
+        TextComponent,
+        GroupComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -34,7 +36,8 @@ import { TextComponent } from './components/text/text.component';
         RectangleComponent,
         SquareComponent,
         EllipseComponent,
-        TextComponent
+        TextComponent,
+        GroupComponent
     ],
     imports: [
         BrowserModule,
