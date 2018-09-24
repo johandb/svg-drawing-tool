@@ -7,6 +7,7 @@ import { RectangleComponent } from '../components/rectangle/rectangle.component'
 import { EllipseComponent } from '../components/ellipse/ellipse.component';
 import { SquareComponent } from '../components/square/square.component';
 import { TextComponent } from '../components/text/text.component';
+import { ImageComponent } from '../components/image/image.component';
 
 @Directive({
     selector: '[svg-dynamic]'
@@ -51,6 +52,8 @@ export class DynamicSvgDirective {
                 return EllipseComponent;
             case ShapeType.TextBox:
                 return TextComponent;
+            case ShapeType.Image:
+                return ImageComponent;
         }
         return null;
     }

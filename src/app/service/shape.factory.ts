@@ -6,6 +6,7 @@ import { RectangleComponent } from "../components/rectangle/rectangle.component"
 import { SquareComponent } from "../components/square/square.component";
 import { EllipseComponent } from "../components/ellipse/ellipse.component";
 import { TextComponent } from "../components/text/text.component";
+import { ImageComponent } from "../components/image/image.component";
 
 export class ShapeComponentFactory {
 
@@ -24,6 +25,8 @@ export class ShapeComponentFactory {
                 return new EllipseComponent();
             case ShapeType.TextBox:
                 return new TextComponent();
+            case ShapeType.Image:
+                return new ImageComponent();
         }
         return null;
     }

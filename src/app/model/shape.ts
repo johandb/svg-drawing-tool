@@ -26,7 +26,7 @@ export class ShapeProperties {
 
     constructor() {
         this.fill = true;
-        this.fillColor = '#ebe5e5';
+        this.fillColor = '#e7e7e7';
         this.stroke = true;
         this.strokeColor = 'black';
         this.strokeWidth = 1;
@@ -136,5 +136,24 @@ export class TextBox extends Shape {
         this.x1 = this.y1 = 0;
         this.value = 'Some text';
         console.log('Text constructor ', this);
+    }
+}
+
+/*
+ * The Image class.
+ */
+export class ImageBox extends Shape {
+
+    public x1: number;
+    public y1: number;
+    public width: number;
+    public height: number;
+    public url: string;
+
+    constructor() {
+        super();
+        this.x1 = this.y1 = this.width = this.height = 0;
+        this.url = 'assets/pictures/tiger.png';
+        console.log('Image constructor ', this);
     }
 }

@@ -16,6 +16,7 @@ import { SquareComponent } from './components/square/square.component';
 import { EllipseComponent } from './components/ellipse/ellipse.component';
 import { TextComponent } from './components/text/text.component';
 import { GroupComponent } from './components/group/group.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { GroupComponent } from './components/group/group.component';
         SquareComponent,
         EllipseComponent,
         TextComponent,
-        GroupComponent
+        GroupComponent,
+        ImageComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -38,11 +40,8 @@ import { GroupComponent } from './components/group/group.component';
         SquareComponent,
         EllipseComponent,
         TextComponent,
-        GroupComponent
-    ],
-    exports: [
-        CommonModule,
-        ColorPickerModule
+        GroupComponent,
+        ImageComponent
     ], imports: [
         BrowserModule,
         ColorPickerModule,
