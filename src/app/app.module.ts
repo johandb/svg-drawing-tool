@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ColorPickerModule } from 'ngx-color-picker';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { LineComponent } from './components/line/line.component';
@@ -39,7 +40,10 @@ import { GroupComponent } from './components/group/group.component';
         TextComponent,
         GroupComponent
     ],
-    imports: [
+    exports: [
+        CommonModule,
+        ColorPickerModule
+    ], imports: [
         BrowserModule,
         ColorPickerModule,
         FormsModule

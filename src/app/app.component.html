@@ -101,7 +101,7 @@
                                                 name="strokeColor" value="{{shapeProperties.strokeColor}}"
                                                 [(colorPicker)]="shapeProperties.strokeColor" [cpOKButton]="true"
                                                 [cpCancelButton]="true" [style.background]="shapeProperties.strokeColor"
-                                                [cpOutputFormat]="hex" />
+                                                [cpOutputFormat]="'hex'" />
                                         </div>
                                         <div class="checkbox">
                                             <label><input type="checkbox" [(ngModel)]="shapeProperties.fill" name="fill"
@@ -111,7 +111,7 @@
                                             <input class="form-control color-text" [(ngModel)]="shapeProperties.fillColor"
                                                 name="fillColor" value="{{shapeProperties.fillColor}}" [(colorPicker)]="shapeProperties.fillColor"
                                                 [cpOKButton]="true" [cpCancelButton]="true" [style.background]="shapeProperties.fillColor"
-                                                [cpOutputFormat]="hex" />
+                                                [cpOutputFormat]="'hex'" />
                                         </div>
                                         <div class="form-group">
                                             <label for="inputState">Size in px</label>

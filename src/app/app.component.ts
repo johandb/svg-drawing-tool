@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     shapeProperties: ShapeProperties = new ShapeProperties();
 
     private selectedShape: ShapeType;
-    private shapeValue: string;
+    public shapeValue: string;
     private shapeComponent: ShapeComponent;
 
     isDragging: boolean = false;
