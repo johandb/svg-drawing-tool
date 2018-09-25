@@ -51,6 +51,10 @@ export class AppComponent implements OnInit {
         console.log('selected shape:', this.selectedShape);
     }
 
+    clearShapes(): void {
+        this.shapeService.removeAllShapeComponents();
+    }
+
     getShapes(): ShapeComponent[] {
         return this.shapeService.getShapeComponents();
     }

@@ -137,9 +137,15 @@
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-md-3">Mouse at : {{ currentPosition.x }},{{currentPosition.y}}</div>
-                <div class="col-md-3">Selected Shape : {{ this.shapeValue }}</div>
-                <div class="col-md-6"></div>
+                <div class="col-md-3">
+                    <p>Mouse at : {{ currentPosition.x }},{{currentPosition.y}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Selected Shape : {{ this.shapeValue }}</p>
+                </div>
+                <div class="col-md-6">
+                    <button (click)="clearShapes()" type="button" class="btn btn-light">Clear</button>
+                </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (mousedown)="onMouseDown($event)"
                 (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
