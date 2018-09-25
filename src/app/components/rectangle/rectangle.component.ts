@@ -30,16 +30,16 @@ export class RectangleComponent extends ShapeComponent implements OnInit {
         return styles;
     }
 
-    startDragging(beginPosition: MousePosition): void {
-        console.log('RectanleComponent startDragging at ', beginPosition);
+    startDrawing(beginPosition: MousePosition): void {
+        console.log('RectanleComponent startDrawing at ', beginPosition);
         if (this.shape instanceof Rectangle) {
             this.shape.x1 = beginPosition.x;
             this.shape.y1 = beginPosition.y;
         }
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('RectangleComponent mouseDragged');
+    draw(currentPosition: MousePosition): void {
+        console.log('RectangleComponent draw');
         if (this.shape instanceof Rectangle) {
             this.shape.width = Math.abs(currentPosition.x - this.shape.x1);
             this.shape.height = Math.abs(currentPosition.y - this.shape.y1);

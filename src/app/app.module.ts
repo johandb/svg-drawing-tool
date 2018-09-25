@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ColorPickerModule } from 'ngx-color-picker';
-import { CommonModule } from '@angular/common';
+
+import { ShapeService } from './service/shape.service';
 
 import { AppComponent } from './app.component';
 import { LineComponent } from './components/line/line.component';
@@ -47,7 +48,9 @@ import { ImageComponent } from './components/image/image.component';
         ColorPickerModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+        ShapeService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

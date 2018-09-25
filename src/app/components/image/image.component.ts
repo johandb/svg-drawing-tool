@@ -21,22 +21,19 @@ export class ImageComponent extends ShapeComponent implements OnInit {
         console.log('ImageComponent ngOnInit');
     }
 
-    startDragging(beginPosition: MousePosition): void {
+    startDrawing(beginPosition: MousePosition): void {
         if (this.shape instanceof ImageBox) {
             this.shape.x1 = beginPosition.x;
             this.shape.y1 = beginPosition.y;
         }
-        console.log('ImageComponent startDragging at ', beginPosition, ', ', this.shape);
+        console.log('ImageComponent startDrawing at ', beginPosition, ', ', this.shape);
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('ImageComponent mouseDragged');
+    draw(currentPosition: MousePosition): void {
+        console.log('ImageComponent draw');
         if (this.shape instanceof ImageBox) {
             this.shape.width = Math.abs(currentPosition.x - this.shape.x1);
             this.shape.height = Math.abs(currentPosition.y - this.shape.y1);
-            if (this.shape.width == 0 || this.shape.height == 0) {
-                this.shape.width = this.shape.height = 50;
-            }
         }
     }
 

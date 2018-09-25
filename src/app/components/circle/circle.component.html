@@ -1,3 +1,4 @@
 <ng-template #shapeTemplate>
-    <svg:circle attr.cx="{{ shape.x1 }}" attr.cy="{{ shape.y1 }}" attr.r="{{ shape.r }}" [ngStyle]="setStyles()" />
+    <svg:circle attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.cx="{{ shape.x1 }}" attr.cy="{{ shape.y1 }}"
+        attr.r="{{ shape.r }}" [ngStyle]="setStyles()" />
 </ng-template>

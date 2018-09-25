@@ -14,7 +14,6 @@ export class ShapeComponent implements OnInit {
     shape: Shape;
     shapeType: ShapeType;
 
-
     constructor() {
         console.log('ShapeComponent constructor');
     }
@@ -23,11 +22,11 @@ export class ShapeComponent implements OnInit {
         console.log('ShapeComponent ngOnInit');
     }
 
-    startDragging(beginPosition: MousePosition): void {
-        console.log('ShapeComponent: startDragging at ', beginPosition);
+    startDrawing(beginPosition: MousePosition): void {
+        console.log('ShapeComponent: startDrawing at ', beginPosition);
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('ShapeComponent: dragMouse');
+    draw(currentPosition: MousePosition): void {
+        console.log('ShapeComponent: draw');
     }
 }

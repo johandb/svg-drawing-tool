@@ -23,6 +23,8 @@ export class ShapeProperties {
     fill: boolean;
     stroke: boolean;
     shapeType: ShapeType;
+    name: string;
+    visible: boolean;
 
     constructor() {
         this.fill = true;
@@ -30,6 +32,8 @@ export class ShapeProperties {
         this.stroke = true;
         this.strokeColor = 'black';
         this.strokeWidth = 1;
+        this.name = 'unknown';
+        this.visible = true;
     }
 }
 
@@ -43,14 +47,11 @@ export interface BaseShape {
  * The Shape object
  */
 export class Shape implements BaseShape {
-    public id: string;
-    public name: string;
-    public clickable: boolean;
-    public visible: boolean;
-    public shapeProperties: ShapeProperties;
+    shapeProperties: ShapeProperties;
 
-    constructor() {
+    constructor(name: string) {
         this.shapeProperties = new ShapeProperties();
+        this.shapeProperties.name = name;
     }
 }
 
@@ -59,30 +60,32 @@ export class Shape implements BaseShape {
  */
 export class Line extends Shape {
 
+    private static id: number = 0;
+
     public x1: number;
     public x2: number;
     public y1: number;
     public y2: number;
 
     constructor() {
-        super();
+        super('line-' + Line.id++);
         this.x1 = this.y1 = this.x2 = this.y2 = 0;
         console.log('Line constructor ', this);
     }
-
 }
 
 /*
  * The Circle class.
  */
 export class Circle extends Shape {
+    private static id: number = 0;
 
     public x1: number;
     public y1: number;
     public r: number;
 
     constructor() {
-        super();
+        super('circle-' + Circle.id++);
         this.x1 = this.y1 = this.r = 0;
         console.log('Circle constructor ', this);
     }
@@ -92,6 +95,7 @@ export class Circle extends Shape {
  * The Rectangle class.
  */
 export class Rectangle extends Shape {
+    private static id: number = 0;
 
     public x1: number;
     public y1: number;
@@ -99,8 +103,24 @@ export class Rectangle extends Shape {
     public height: number;
 
     constructor() {
-        super();
+        super('rectangle-' + Rectangle.id++);
         this.x1 = this.y1 = this.width = this.height = 0;
+        console.log('Rectangle constructor ', this);
+    }
+}
+
+/*
+ * The Square class.
+ */
+export class Square extends Shape {
+    private static id: number = 0;
+    public x1: number;
+    public y1: number;
+    public width: number;
+
+    constructor() {
+        super('square-' + Square.id++);
+        this.x1 = this.y1 = this.width = 0;
         console.log('Rectangle constructor ', this);
     }
 }
@@ -109,6 +129,7 @@ export class Rectangle extends Shape {
  * The Ellipse class.
  */
 export class Ellipse extends Shape {
+    private static id: number = 0;
 
     public x1: number;
     public y1: number;
@@ -116,7 +137,7 @@ export class Ellipse extends Shape {
     public ry: number;
 
     constructor() {
-        super();
+        super('ellipse-' + Ellipse.id++);
         this.x1 = this.y1 = this.rx = this.ry = 0;
         console.log('Ellipse constructor ', this);
     }
@@ -126,13 +147,14 @@ export class Ellipse extends Shape {
  * The TextBox class.
  */
 export class TextBox extends Shape {
+    private static id: number = 0;
 
     public x1: number;
     public y1: number;
     public value: string;
 
     constructor() {
-        super();
+        super('text-' + TextBox.id++);
         this.x1 = this.y1 = 0;
         this.value = 'Some text';
         console.log('Text constructor ', this);
@@ -143,6 +165,7 @@ export class TextBox extends Shape {
  * The Image class.
  */
 export class ImageBox extends Shape {
+    private static id: number = 0;
 
     public x1: number;
     public y1: number;
@@ -151,7 +174,7 @@ export class ImageBox extends Shape {
     public url: string;
 
     constructor() {
-        super();
+        super('image-' + ImageBox.id++);
         this.x1 = this.y1 = this.width = this.height = 0;
         this.url = 'assets/pictures/tiger.png';
         console.log('Image constructor ', this);

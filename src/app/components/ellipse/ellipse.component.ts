@@ -30,20 +30,20 @@ export class EllipseComponent extends ShapeComponent implements OnInit {
         return styles;
     }
 
-    startDragging(beginPosition: MousePosition): void {
-        console.log('EllipseComponent startDragging at ', beginPosition);
+    startDrawing(beginPosition: MousePosition): void {
+        console.log('EllipseComponent startDrawing at ', beginPosition);
         if (this.shape instanceof Ellipse) {
             this.shape.x1 = beginPosition.x;
             this.shape.y1 = beginPosition.y;
         }
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('EllipseComponent mouseDragged');
+    draw(currentPosition: MousePosition): void {
+        console.log('EllipseComponent draw');
         if (this.shape instanceof Ellipse) {
             this.shape.rx = Math.abs(currentPosition.x - this.shape.x1);
             this.shape.ry = Math.abs(currentPosition.y - this.shape.y1);
-            console.log('eliipse properties : ', this.shape);
+            //console.log('eliipse properties : ', this.shape);
         }
     }
 

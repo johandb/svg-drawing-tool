@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row header">
         <div class="col-md-2">
             <img src="assets/frog.png" width="160" height="80" />
@@ -91,6 +91,11 @@
                             <div class="row nopadding">
                                 <div class="col-md-12">
                                     <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control" type="text" [(ngModel)]="shapeProperties.name"
+                                                name="name" value="{{shapeProperties.name}}" />
+                                        </div>
                                         <div class="checkbox">
                                             <label><input type="checkbox" [(ngModel)]="shapeProperties.stroke" name="stroke"
                                                     checked="{{shapeProperties.stroke}}">
@@ -138,8 +143,8 @@
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (mousedown)="onMouseDown($event)"
                 (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
-                <ng-container *ngFor="let shape of shapes">
-                    <ng-template svg-dynamic [data]="shape"></ng-template>
+                <ng-container *ngFor="let shape of getShapes()">
+                    <ng-template svg-dynamic [component]="shape"></ng-template>
                 </ng-container>
             </svg>
         </div>

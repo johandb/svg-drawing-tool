@@ -12,9 +12,9 @@ export class CircleComponent extends ShapeComponent implements OnInit {
 
     constructor() {
         super();
-        console.log('CircleComponent constructor');
         this.shape = new Circle();
         this.shapeType = ShapeType.Circle;
+        console.log('CircleComponent constructor:', this);
     }
 
     ngOnInit() {
@@ -30,19 +30,19 @@ export class CircleComponent extends ShapeComponent implements OnInit {
         return styles;
     }
 
-    startDragging(beginPosition: MousePosition): void {
-        console.log('CircleComponent startDragging at ', beginPosition);
+    startDrawing(beginPosition: MousePosition): void {
+        console.log('CircleComponent startDrawing at ', beginPosition);
         if (this.shape instanceof Circle) {
             this.shape.x1 = beginPosition.x;
             this.shape.y1 = beginPosition.y;
         }
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('CircleComponent mouseDragged');
+    draw(currentPosition: MousePosition): void {
+        console.log('CircleComponent draw');
         if (this.shape instanceof Circle) {
             this.shape.r = Math.abs(currentPosition.x - this.shape.x1);
-            console.log('circle properties : ', this.shape.shapeProperties);
+            //console.log('circle properties : ', this.shape.shapeProperties);
         }
     }
 }

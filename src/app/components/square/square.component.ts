@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
-import { Rectangle, MousePosition } from '../../model/shape';
+import { MousePosition, Square } from '../../model/shape';
 import { ShapeType } from '../../model/shape-types';
 
 @Component({
@@ -13,7 +13,7 @@ export class SquareComponent extends ShapeComponent implements OnInit {
     constructor() {
         super();
         console.log('SquareComponent constructor');
-        this.shape = new Rectangle();
+        this.shape = new Square();
         this.shapeType = ShapeType.Square;
     }
 
@@ -30,18 +30,18 @@ export class SquareComponent extends ShapeComponent implements OnInit {
         return styles;
     }
 
-    startDragging(beginPosition: MousePosition): void {
-        console.log('SquareComponent startDragging at ', beginPosition);
-        if (this.shape instanceof Rectangle) {
+    startDrawing(beginPosition: MousePosition): void {
+        console.log('SquareComponent startDrawing at ', beginPosition);
+        if (this.shape instanceof Square) {
             this.shape.x1 = beginPosition.x;
             this.shape.y1 = beginPosition.y;
         }
     }
 
-    mouseDragged(currentPosition: MousePosition): void {
-        console.log('SquareComponent mouseDragged');
-        if (this.shape instanceof Rectangle) {
-            this.shape.width = this.shape.height = Math.abs(currentPosition.x - this.shape.x1);
+    draw(currentPosition: MousePosition): void {
+        console.log('SquareComponent draw');
+        if (this.shape instanceof Square) {
+            this.shape.width = Math.abs(currentPosition.x - this.shape.x1);
         }
     }
 }
