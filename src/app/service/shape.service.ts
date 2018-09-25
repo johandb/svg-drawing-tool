@@ -18,6 +18,10 @@ export class ShapeService {
         return this.shapesComponents;
     }
 
+    removeAllShapeComponents(): void {
+        this.shapesComponents = [];
+    }
+
     setShapeComponent(component: ShapeComponent): void {
         this.selectedComponent = component;
         this.shapesComponents.push(component);
