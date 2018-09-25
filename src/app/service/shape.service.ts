@@ -32,4 +32,8 @@ export class ShapeService {
     getShapeComponent(): ShapeComponent {
         return this.selectedComponent;
     }
+
+    findShapeComponent(name: string): ShapeComponent {
+        return this.shapesComponents.find(x => x.shape.shapeProperties.name == name);
+    }
 }

@@ -48,9 +48,12 @@ export interface BaseShape {
  */
 export class Shape implements BaseShape {
     shapeProperties: ShapeProperties;
+    public originX: number;
+    public originY: number;
 
     constructor(name: string) {
         this.shapeProperties = new ShapeProperties();
+        this.originX = this.originY = 0;
         this.shapeProperties.name = name;
     }
 }
@@ -62,14 +65,12 @@ export class Line extends Shape {
 
     private static id: number = 0;
 
-    public x1: number;
     public x2: number;
-    public y1: number;
     public y2: number;
 
     constructor() {
         super('line-' + Line.id++);
-        this.x1 = this.y1 = this.x2 = this.y2 = 0;
+        this.x2 = this.y2 = 0;
         console.log('Line constructor ', this);
     }
 }
@@ -80,13 +81,11 @@ export class Line extends Shape {
 export class Circle extends Shape {
     private static id: number = 0;
 
-    public x1: number;
-    public y1: number;
     public r: number;
 
     constructor() {
         super('circle-' + Circle.id++);
-        this.x1 = this.y1 = this.r = 0;
+        this.r = 0;
         console.log('Circle constructor ', this);
     }
 }
@@ -97,14 +96,12 @@ export class Circle extends Shape {
 export class Rectangle extends Shape {
     private static id: number = 0;
 
-    public x1: number;
-    public y1: number;
     public width: number;
     public height: number;
 
     constructor() {
         super('rectangle-' + Rectangle.id++);
-        this.x1 = this.y1 = this.width = this.height = 0;
+        this.width = this.height = 0;
         console.log('Rectangle constructor ', this);
     }
 }
@@ -114,13 +111,12 @@ export class Rectangle extends Shape {
  */
 export class Square extends Shape {
     private static id: number = 0;
-    public x1: number;
-    public y1: number;
+
     public width: number;
 
     constructor() {
         super('square-' + Square.id++);
-        this.x1 = this.y1 = this.width = 0;
+        this.width = 0;
         console.log('Rectangle constructor ', this);
     }
 }
@@ -131,14 +127,12 @@ export class Square extends Shape {
 export class Ellipse extends Shape {
     private static id: number = 0;
 
-    public x1: number;
-    public y1: number;
     public rx: number;
     public ry: number;
 
     constructor() {
         super('ellipse-' + Ellipse.id++);
-        this.x1 = this.y1 = this.rx = this.ry = 0;
+        this.rx = this.ry = 0;
         console.log('Ellipse constructor ', this);
     }
 }
@@ -149,13 +143,10 @@ export class Ellipse extends Shape {
 export class TextBox extends Shape {
     private static id: number = 0;
 
-    public x1: number;
-    public y1: number;
     public value: string;
 
     constructor() {
         super('text-' + TextBox.id++);
-        this.x1 = this.y1 = 0;
         this.value = 'Some text';
         console.log('Text constructor ', this);
     }
@@ -167,15 +158,13 @@ export class TextBox extends Shape {
 export class ImageBox extends Shape {
     private static id: number = 0;
 
-    public x1: number;
-    public y1: number;
     public width: number;
     public height: number;
     public url: string;
 
     constructor() {
         super('image-' + ImageBox.id++);
-        this.x1 = this.y1 = this.width = this.height = 0;
+        this.width = this.height = 0;
         this.url = 'assets/pictures/tiger.png';
         console.log('Image constructor ', this);
     }

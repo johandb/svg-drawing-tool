@@ -13,6 +13,7 @@ export class ShapeComponent implements OnInit {
 
     shape: Shape;
     shapeType: ShapeType;
+    offset: MousePosition;
 
     constructor() {
         console.log('ShapeComponent constructor');
@@ -27,6 +28,19 @@ export class ShapeComponent implements OnInit {
     }
 
     draw(currentPosition: MousePosition): void {
-        console.log('ShapeComponent: draw');
+        console.log('ShapeComponent: draw at ', currentPosition);
     }
+
+    drag(draqPosition: MousePosition): void {
+        console.log(this.shape.shapeProperties.name + ' drag at ', draqPosition, ', offset : ', this.offset);
+        if (this.offset == undefined) {
+            this.offset = Object.assign({}, draqPosition);
+            this.offset.x -= this.shape.originX;
+            this.offset.y -= this.shape.originY;
+        }
+        this.shape.originX = (draqPosition.x - this.offset.x);
+        this.shape.originY = (draqPosition.y - this.offset.y);
+    }
+
+
 }

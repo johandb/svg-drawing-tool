@@ -1,4 +1,4 @@
 <ng-template #shapeTemplate>
-    <svg:text attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.x1 }}" attr.y="{{ shape.y1 }}"
+    <svg:text attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.originX }}" attr.y="{{ shape.originY }}"
         [ngStyle]="setStyles()">{{ shape.value }}</svg:text>
 </ng-template>

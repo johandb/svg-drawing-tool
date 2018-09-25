@@ -23,8 +23,8 @@ export class ImageComponent extends ShapeComponent implements OnInit {
 
     startDrawing(beginPosition: MousePosition): void {
         if (this.shape instanceof ImageBox) {
-            this.shape.x1 = beginPosition.x;
-            this.shape.y1 = beginPosition.y;
+            this.shape.originX = beginPosition.x;
+            this.shape.originY = beginPosition.y;
         }
         console.log('ImageComponent startDrawing at ', beginPosition, ', ', this.shape);
     }
@@ -32,8 +32,8 @@ export class ImageComponent extends ShapeComponent implements OnInit {
     draw(currentPosition: MousePosition): void {
         console.log('ImageComponent draw');
         if (this.shape instanceof ImageBox) {
-            this.shape.width = Math.abs(currentPosition.x - this.shape.x1);
-            this.shape.height = Math.abs(currentPosition.y - this.shape.y1);
+            this.shape.width = Math.abs(currentPosition.x - this.shape.originX);
+            this.shape.height = Math.abs(currentPosition.y - this.shape.originY);
         }
     }
 

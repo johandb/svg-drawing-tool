@@ -1,4 +1,4 @@
 <ng-template #shapeTemplate>
-    <svg:rect attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.x1 }}" attr.y="{{ shape.y1 }}"
+    <svg:rect attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.originX }}" attr.y="{{ shape.originY }}"
         attr.width="{{ shape.width }}" attr.height="{{ shape.width }}" [ngStyle]="setStyles()" />
 </ng-template>

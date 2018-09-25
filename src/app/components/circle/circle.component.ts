@@ -33,16 +33,17 @@ export class CircleComponent extends ShapeComponent implements OnInit {
     startDrawing(beginPosition: MousePosition): void {
         console.log('CircleComponent startDrawing at ', beginPosition);
         if (this.shape instanceof Circle) {
-            this.shape.x1 = beginPosition.x;
-            this.shape.y1 = beginPosition.y;
+            this.shape.originX = beginPosition.x;
+            this.shape.originY = beginPosition.y;
         }
     }
 
     draw(currentPosition: MousePosition): void {
         console.log('CircleComponent draw');
         if (this.shape instanceof Circle) {
-            this.shape.r = Math.abs(currentPosition.x - this.shape.x1);
+            this.shape.r = Math.abs(currentPosition.x - this.shape.originX);
             //console.log('circle properties : ', this.shape.shapeProperties);
         }
     }
+
 }

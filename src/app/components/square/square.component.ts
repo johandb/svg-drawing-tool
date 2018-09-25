@@ -33,15 +33,15 @@ export class SquareComponent extends ShapeComponent implements OnInit {
     startDrawing(beginPosition: MousePosition): void {
         console.log('SquareComponent startDrawing at ', beginPosition);
         if (this.shape instanceof Square) {
-            this.shape.x1 = beginPosition.x;
-            this.shape.y1 = beginPosition.y;
+            this.shape.originX = beginPosition.x;
+            this.shape.originY = beginPosition.y;
         }
     }
 
     draw(currentPosition: MousePosition): void {
         console.log('SquareComponent draw');
         if (this.shape instanceof Square) {
-            this.shape.width = Math.abs(currentPosition.x - this.shape.x1);
+            this.shape.width = Math.abs(currentPosition.x - this.shape.originX);
         }
     }
 }

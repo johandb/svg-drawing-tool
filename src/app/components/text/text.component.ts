@@ -30,8 +30,8 @@ export class TextComponent extends ShapeComponent implements OnInit {
 
     startDrawing(beginPosition: MousePosition): void {
         if (this.shape instanceof TextBox) {
-            this.shape.x1 = beginPosition.x;
-            this.shape.y1 = beginPosition.y;
+            this.shape.originX = beginPosition.x;
+            this.shape.originY = beginPosition.y;
         }
         console.log('TextComponent startDrawing at ', beginPosition, ', ', this.shape);
 
