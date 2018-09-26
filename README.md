@@ -7,6 +7,8 @@ How it Works
 ============
 Select a shape from the shape menu (line, circle) and click somewhere in the graphical space of the svg. Hold down the mouse and drag the shape to match its size. If you want to move a shape click on it and move the shape while holding down the mouse. Move to the new location. Shapes like line, polygon can not be moved.
 
+In the properties menu you can select the stroke color and width. Also you can sit the fill color for the shape.
+
 TODO
 ====
 1. Implement property inspector for each shape i.e. line, circle, rectangle etc.
