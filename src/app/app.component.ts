@@ -26,13 +26,13 @@ export class AppComponent implements OnInit {
 
     shapeProperties: ShapeProperties = new ShapeProperties();
 
-    private selectedShape: ShapeType;
-    private shapeValue: string;
+    selectedShape: ShapeType;
+    shapeValue: string;
 
-    private selectedTool: ToolType;
+    selectedTool: ToolType;
 
-    private shapeComponent: ShapeComponent;
-    private selectedComponent: ShapeComponent;
+    shapeComponent: ShapeComponent;
+    selectedComponent: ShapeComponent;
 
     isDragging: boolean = false;
     isDrawing: boolean = false;

@@ -13,5 +13,9 @@ export enum ShapeType {
 
 export enum ToolType {
     Pointer,
-    Move
+    Move,
+    Rotate,
+    SelectArea,
+    Flipvertical,
+    Fliphorizontal
 }
