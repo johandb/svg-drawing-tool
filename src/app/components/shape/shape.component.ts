@@ -28,6 +28,10 @@ export class ShapeComponent implements OnInit {
         console.log('ShapeComponent: startDrawing at ', beginPosition);
     }
 
+    endDrawing(): void {
+        console.log('ShapeComponent: endDrawing()');
+    }
+
     draw(currentPosition: MousePosition): void {
         console.log('ShapeComponent: draw at ', currentPosition);
     }

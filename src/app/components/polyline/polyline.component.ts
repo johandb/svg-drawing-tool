@@ -53,4 +53,8 @@ export class PolyLineComponent extends ShapeComponent implements OnInit {
             console.log('PolyLineComponent : draw() last= ', this.lastPoint, ', current=', this.currentPoint, ', points=', this.shape.points);
         }
     }
+
+    endDrawing(): void {
+        this.currentPoint = this.lastPoint;
+    }
 }

@@ -67,6 +67,12 @@ export class AppComponent implements OnInit {
 
     selectTool(toolType: string): void {
         console.log('selected tool:', toolType);
+        if (toolType == 'pointer') {
+            if (this.isSelectingPoints) {
+                this.shapeComponent.endDrawing();
+                this.isSelectingPoints = false;
+            }
+        }
     }
 
     getMousePosition(event: MouseEvent) {
