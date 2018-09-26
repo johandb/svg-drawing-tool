@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
     selectShape(shapeType: string): void {
         this.selectedShape = ShapeType[shapeType];
         this.shapeValue = ShapeType[this.selectedShape];
+        this.isSelectingPoints = false;
         console.log('selected shape:', this.selectedShape);
     }
 
@@ -98,10 +99,14 @@ export class AppComponent implements OnInit {
     onMouseDown(event): void {
         this.getMousePosition(event);
         console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.shapeComponent);
+        console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
             console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
+        } else if (this.isSelectingPoints) {
+            console.log('SELECT POINTS!!!! ', this.shapeComponent);
+            this.shapeComponent.startDrawing(this.currentPosition);
         } else if (this.selectedShape != ShapeType.NoShape) {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
@@ -118,7 +123,9 @@ export class AppComponent implements OnInit {
             this.shapeProperties.name = this.shapeComponent.shape.shapeProperties.name;
             this.shapeComponent.startDrawing(this.currentPosition);
             console.log('component shape : ', this.shapeComponent.shape);
-
+            if (this.selectedShape == ShapeType.PolyLine) {
+                this.isSelectingPoints = true;
+            }
             this.isDrawing = true;
         }
     }
@@ -137,7 +144,7 @@ export class AppComponent implements OnInit {
     onMouseUp(event): void {
         this.getMousePosition(event);
         console.log('mouse up svg : ', this.shapeService.getShapeComponents());
-        this.selectedShape = ShapeType.NoShape;
+        //this.selectedShape = ShapeType.NoShape;
         this.shapeValue = ShapeType[this.selectedShape];
         this.isDrawing = false;
         this.isDragging = false;

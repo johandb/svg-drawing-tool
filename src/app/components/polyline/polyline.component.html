@@ -1,5 +1,5 @@
 <ng-template #shapeTemplate>
-    <svg:polyline [attr.points]="getPoints()" style="fill:none;stroke:black;stroke-width:3">
+    <svg:polyline attr.points="{{ value }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:polyline>
 </ng-template>
