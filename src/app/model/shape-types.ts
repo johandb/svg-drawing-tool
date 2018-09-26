@@ -10,3 +10,8 @@ export enum ShapeType {
     Image,
     Square
 }
+
+export enum ToolType {
+    Pointer,
+    Move
+}

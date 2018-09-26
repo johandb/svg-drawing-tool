@@ -2,7 +2,7 @@ import { Component, ContentChild, TemplateRef, OnInit, ComponentFactoryResolver,
 
 import { ShapeComponent } from './components/shape/shape.component';
 import { ShapeProperties, MousePosition } from './model/shape';
-import { ShapeType } from './model/shape-types';
+import { ShapeType, ToolType } from './model/shape-types';
 import { ShapeService } from './service/shape.service';
 import { LineComponent } from './components/line/line.component';
 import { CircleComponent } from './components/circle/circle.component';
@@ -27,7 +27,10 @@ export class AppComponent implements OnInit {
     shapeProperties: ShapeProperties = new ShapeProperties();
 
     private selectedShape: ShapeType;
-    public shapeValue: string;
+    private shapeValue: string;
+
+    private selectedTool: ToolType;
+
     private shapeComponent: ShapeComponent;
     private selectedComponent: ShapeComponent;
 
@@ -66,8 +69,9 @@ export class AppComponent implements OnInit {
     }
 
     selectTool(toolType: string): void {
+        this.selectedTool = ToolType[toolType];
         console.log('selected tool:', toolType);
-        if (toolType == 'pointer') {
+        if (this.selectedTool == ToolType.Pointer) {
             if (this.isSelectingPoints) {
                 this.shapeComponent.endDrawing();
                 this.isSelectingPoints = false;
