@@ -18,6 +18,7 @@ import { EllipseComponent } from './components/ellipse/ellipse.component';
 import { TextComponent } from './components/text/text.component';
 import { GroupComponent } from './components/group/group.component';
 import { ImageComponent } from './components/image/image.component';
+import { PolyLineComponent } from './components/polyline/polyline.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { ImageComponent } from './components/image/image.component';
         EllipseComponent,
         TextComponent,
         GroupComponent,
-        ImageComponent
+        ImageComponent,
+        PolyLineComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -42,7 +44,8 @@ import { ImageComponent } from './components/image/image.component';
         EllipseComponent,
         TextComponent,
         GroupComponent,
-        ImageComponent
+        ImageComponent,
+        PolyLineComponent
     ], imports: [
         BrowserModule,
         ColorPickerModule,

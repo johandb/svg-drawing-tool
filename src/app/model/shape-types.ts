@@ -6,6 +6,7 @@ export enum ShapeType {
     Rectangle,
     TextBox,
     Path,
+    PolyLine,
     Image,
     Square
 }

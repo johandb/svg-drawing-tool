@@ -1,4 +1,4 @@
-import { Directive, Input, ViewContainerRef } from '@angular/core';
+import { Directive, Input, ViewContainerRef, OnInit } from '@angular/core';
 import { ShapeComponent } from '../components/shape/shape.component';
 import { ShapeService } from '../service/shape.service';
 

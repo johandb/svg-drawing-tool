@@ -169,3 +169,18 @@ export class ImageBox extends Shape {
         console.log('Image constructor ', this);
     }
 }
+
+/*
+ * The PolyLine class.
+ */
+export class PolyLine extends Shape {
+    private static id: number = 0;
+
+    public points: MousePosition[];
+
+    constructor() {
+        super('polyline-' + PolyLine.id++);
+        this.points = [];
+        console.log('PolyLine constructor ', this);
+    }
+}

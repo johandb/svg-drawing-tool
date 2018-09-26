@@ -1,4 +1,6 @@
 <ng-template #shapeTemplate>
     <svg:ellipse attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.cx="{{ shape.originX }}" attr.cy="{{ shape.originY }}"
-        attr.rx="{{ shape.rx }}" attr.ry="{{ shape.ry }}" [ngStyle]="setStyles()" />
+        attr.rx="{{ shape.rx }}" attr.ry="{{ shape.ry }}" [ngStyle]="setStyles()">
+        <title>{{ shape.shapeProperties.name }}</title>
+    </svg:ellipse>
 </ng-template>

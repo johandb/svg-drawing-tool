@@ -11,6 +11,7 @@ import { SquareComponent } from './components/square/square.component';
 import { EllipseComponent } from './components/ellipse/ellipse.component';
 import { TextComponent } from './components/text/text.component';
 import { ImageComponent } from './components/image/image.component';
+import { PolyLineComponent } from './components/polyline/polyline.component';
 
 @Component({
     selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
 
     isDragging: boolean = false;
     isDrawing: boolean = false;
+    isSelectingPoints: boolean = false;
 
     @ContentChild(TemplateRef) shapeTemplate: TemplateRef<any>;
 
@@ -87,16 +89,18 @@ export class AppComponent implements OnInit {
                 return TextComponent;
             case ShapeType.Image:
                 return ImageComponent;
+            case ShapeType.PolyLine:
+                return PolyLineComponent;
         }
         return null;
     }
 
     onMouseDown(event): void {
         this.getMousePosition(event);
-        console.log('mouse down svg : ', this.currentPosition, ', ', event);
+        console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.shapeComponent);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
-            console.log(event.target.id, ' DRAGGING : ', this.selectedComponent);
+            console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
         } else if (this.selectedShape != ShapeType.NoShape) {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
@@ -114,6 +118,7 @@ export class AppComponent implements OnInit {
             this.shapeProperties.name = this.shapeComponent.shape.shapeProperties.name;
             this.shapeComponent.startDrawing(this.currentPosition);
             console.log('component shape : ', this.shapeComponent.shape);
+
             this.isDrawing = true;
         }
     }

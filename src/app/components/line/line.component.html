@@ -1,4 +1,6 @@
 <ng-template #shapeTemplate>
-    <svg:line attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x1="{{ shape.originX }}" attr.y1="{{ shape.originY }}"
-        attr.x2="{{ shape.x2 }}" attr.y2="{{ shape.y2 }}" [ngStyle]="setStyles()" />
+    <svg:line attr.id="{{shape.shapeProperties.name}}" attr.x1="{{ shape.originX }}" attr.y1="{{ shape.originY }}"
+        attr.x2="{{ shape.x2 }}" attr.y2="{{ shape.y2 }}" [ngStyle]="setStyles()">
+        <title>{{ shape.shapeProperties.name }}</title>
+    </svg:line>
 </ng-template>
