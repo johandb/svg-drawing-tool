@@ -46,4 +46,11 @@ export class CircleComponent extends ShapeComponent implements OnInit {
         }
     }
 
+    setSelectionPoints(): void {
+
+        // <!-- < svg: rect attr.x = "{{ shape.originX - shape.r }}" attr.y = "{{ shape.originY - shape.r }}" attr.width = "{{ shape.r * 2 }}"
+        // attr.height = "{{ shape.r * 2 }}" style = "stroke: red; stroke-width: 1; stroke-dasharray:5; fill:none" /> -->
+
+    }
+
 }

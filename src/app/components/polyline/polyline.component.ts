@@ -11,6 +11,9 @@ import { ShapeType } from '../../model/shape-types';
 export class PolyLineComponent extends ShapeComponent implements OnInit {
 
     value: string = '';
+    lastPoint: MousePosition;
+    currentPoint: MousePosition;
+    hasPoints: boolean = false;
 
     constructor() {
         super();
@@ -33,13 +36,21 @@ export class PolyLineComponent extends ShapeComponent implements OnInit {
         return styles;
     }
 
-    startDrawing(point: MousePosition): void {
+    setPoint(point: MousePosition): void {
         if (this.shape instanceof PolyLine) {
-            this.shape.points.push(point);
+            this.lastPoint = Object.assign({}, point);
+            this.shape.points.push(this.lastPoint);
             console.log('points = ', this.shape.points);
             this.value += point.x + "," + point.y + " ";
+            console.log('PolyLineComponent value ', this.value);
         }
-        console.log('PolyLineComponent value ', this.value);
     }
 
+    draw(currentPosition: MousePosition): void {
+        if (this.shape instanceof PolyLine) {
+            this.currentPoint = Object.assign({}, currentPosition);
+            this.hasPoints = true;
+            console.log('PolyLineComponent : draw() last= ', this.lastPoint, ', current=', this.currentPoint, ', points=', this.shape.points);
+        }
+    }
 }

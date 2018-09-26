@@ -57,6 +57,8 @@ export class AppComponent implements OnInit {
 
     clearShapes(): void {
         this.shapeService.removeAllShapeComponents();
+        this.selectedShape = ShapeType.NoShape;
+        this.shapeValue = ShapeType[this.selectedShape];
     }
 
     getShapes(): ShapeComponent[] {
@@ -104,10 +106,7 @@ export class AppComponent implements OnInit {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
             console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
-        } else if (this.isSelectingPoints) {
-            console.log('SELECT POINTS!!!! ', this.shapeComponent);
-            this.shapeComponent.startDrawing(this.currentPosition);
-        } else if (this.selectedShape != ShapeType.NoShape) {
+        } else if (this.selectedShape != ShapeType.NoShape && !this.isSelectingPoints) {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
             let component = factory.create(injector);
@@ -121,18 +120,20 @@ export class AppComponent implements OnInit {
             this.shapeComponent.shape.shapeProperties.strokeColor = this.shapeProperties.strokeColor;
             this.shapeComponent.shape.shapeProperties.strokeWidth = this.shapeProperties.strokeWidth;
             this.shapeProperties.name = this.shapeComponent.shape.shapeProperties.name;
-            this.shapeComponent.startDrawing(this.currentPosition);
             console.log('component shape : ', this.shapeComponent.shape);
             if (this.selectedShape == ShapeType.PolyLine) {
                 this.isSelectingPoints = true;
+            } else {
+                this.isDrawing = true;
+                this.shapeComponent.startDrawing(this.currentPosition);
+
             }
-            this.isDrawing = true;
         }
     }
 
     onMouseMove(event): void {
         this.getMousePosition(event);
-        if (this.shapeComponent && this.isDrawing) {
+        if (this.shapeComponent && (this.isDrawing || this.isSelectingPoints)) {
             this.shapeComponent.draw(this.currentPosition);
         } else if (this.selectedComponent && this.isDragging) {
             console.log('DRAGGING move !!!');
@@ -144,6 +145,10 @@ export class AppComponent implements OnInit {
     onMouseUp(event): void {
         this.getMousePosition(event);
         console.log('mouse up svg : ', this.shapeService.getShapeComponents());
+        if (this.isSelectingPoints) {
+            console.log('SELECT POINTS!!!! ', this.shapeComponent);
+            this.shapeComponent.setPoint(this.currentPosition);
+        }
         //this.selectedShape = ShapeType.NoShape;
         this.shapeValue = ShapeType[this.selectedShape];
         this.isDrawing = false;

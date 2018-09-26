@@ -14,6 +14,7 @@ export class ShapeComponent implements OnInit {
     shape: Shape;
     shapeType: ShapeType;
     offset: MousePosition;
+    selectionPoints: MousePosition[] = [];
 
     constructor() {
         console.log('ShapeComponent constructor');
@@ -29,6 +30,10 @@ export class ShapeComponent implements OnInit {
 
     draw(currentPosition: MousePosition): void {
         console.log('ShapeComponent: draw at ', currentPosition);
+    }
+
+    setPoint(point: MousePosition): void {
+        console.log('ShapeComponent: setPoint at ', point);
     }
 
     drag(draqPosition: MousePosition): void {
