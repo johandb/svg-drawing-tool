@@ -19,7 +19,7 @@ import { PolyLineComponent } from './components/polyline/polyline.component';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'Component Editor';
+    title = 'SVG Drawing Tool';
 
     svg: any;
     currentPosition: MousePosition = new MousePosition();
