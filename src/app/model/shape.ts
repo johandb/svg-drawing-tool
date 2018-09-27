@@ -184,3 +184,18 @@ export class PolyLine extends Shape {
         console.log('PolyLine constructor ', this);
     }
 }
+
+/*
+ * The Path class.
+ */
+export class Path extends Shape {
+    private static id: number = 0;
+
+    public points: MousePosition[];
+
+    constructor() {
+        super('path-' + Path.id++);
+        this.points = [];
+        console.log('Path constructor ', this);
+    }
+}

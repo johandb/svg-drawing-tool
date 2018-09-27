@@ -19,6 +19,7 @@ import { TextComponent } from './components/text/text.component';
 import { GroupComponent } from './components/group/group.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
+import { PathComponent } from './components/path/path.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { PolyLineComponent } from './components/polyline/polyline.component';
         TextComponent,
         GroupComponent,
         ImageComponent,
-        PolyLineComponent
+        PolyLineComponent,
+        PathComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -45,7 +47,8 @@ import { PolyLineComponent } from './components/polyline/polyline.component';
         TextComponent,
         GroupComponent,
         ImageComponent,
-        PolyLineComponent
+        PolyLineComponent,
+        PathComponent
     ], imports: [
         BrowserModule,
         ColorPickerModule,

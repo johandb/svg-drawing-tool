@@ -12,6 +12,7 @@ import { EllipseComponent } from './components/ellipse/ellipse.component';
 import { TextComponent } from './components/text/text.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
+import { PathComponent } from './components/path/path.component';
 
 @Component({
     selector: 'app-root',
@@ -104,6 +105,8 @@ export class AppComponent implements OnInit {
                 return ImageComponent;
             case ShapeType.PolyLine:
                 return PolyLineComponent;
+            case ShapeType.Path:
+                return PathComponent;
         }
         return null;
     }
