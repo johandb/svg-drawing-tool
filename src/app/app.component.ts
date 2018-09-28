@@ -111,6 +111,13 @@ export class AppComponent implements OnInit {
         return null;
     }
 
+    canSelectPoints(): boolean {
+        if (this.selectedShape == ShapeType.PolyLine || this.selectedShape == ShapeType.Path) {
+            return true;
+        }
+        return false;
+    }
+
     onMouseDown(event): void {
         this.getMousePosition(event);
         console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.shapeComponent);
@@ -134,12 +141,11 @@ export class AppComponent implements OnInit {
             this.shapeComponent.shape.shapeProperties.strokeWidth = this.shapeProperties.strokeWidth;
             this.shapeProperties.name = this.shapeComponent.shape.shapeProperties.name;
             console.log('component shape : ', this.shapeComponent.shape);
-            if (this.selectedShape == ShapeType.PolyLine) {
+            if (this.canSelectPoints()) {
                 this.isSelectingPoints = true;
             } else {
                 this.isDrawing = true;
                 this.shapeComponent.startDrawing(this.currentPosition);
-
             }
         }
     }

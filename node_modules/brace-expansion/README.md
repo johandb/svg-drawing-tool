@@ -38,7 +38,7 @@ expand('file-{a..e..2}.jpg')
 expand('file{00..10..5}.jpg')
 // => ['file00.jpg', 'file05.jpg', 'file10.jpg']
 
-expand('{{A..C},{a..c}}')
+expand('{A..C},{a..c}')
 // => ['A', 'B', 'C', 'a', 'b', 'c']
 
 expand('ppp{,config,oe{,conf}}')

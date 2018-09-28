@@ -1,6 +1,7 @@
 <ng-template #shapeTemplate>
     <svg:line *ngIf="hasPoints" attr.x1="{{ lastPoint.x }}" attr.y1="{{ lastPoint.y }}" attr.x2="{{ currentPoint.x }}"
-        attr.y2="{{ currentPoint.y }}" [ngStyle]="setStyles()"></svg:line>
+        attr.y2="{{ currentPoint.y }}" [ngStyle]="setStyles()">
+    </svg:line>
 
     <svg:polyline attr.points="{{ value }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
