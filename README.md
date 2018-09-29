@@ -11,6 +11,8 @@ If drawing PolyGon select the point by mouse click. When finished select the Poi
 
 In the properties menu you can select the stroke color and width. Also you can sit the fill color for the shape.
 
+Click on the clear button to erase all shapes on the canvas.
+
 TODO
 ====
 1. Implement property inspector for each shape i.e. line, circle, rectangle etc.
