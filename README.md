@@ -14,11 +14,10 @@ In the properties menu you can select the stroke color and width. Also you can s
 TODO
 ====
 1. Implement property inspector for each shape i.e. line, circle, rectangle etc.
-2. Implement Path component.
-3. Save svg to disk
-4. Apply property settings to style sheets.
-5. Resize components
-6. Group shapes
+2. Save svg to disk
+3. Apply property settings to style sheets.
+4. Resize components
+5. Group shapes
 
 Below is a screenshot how the app looks.
 
