@@ -33,6 +33,11 @@ h1 {
     background-color: whitesmoke;
 }
 
+.toolbar {
+    background-color: whitesmoke;
+    margin: 0;
+}
+
 .color-text {
     font-weight: bolder;
     color: white;

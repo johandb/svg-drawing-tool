@@ -1,4 +1,4 @@
-import { ShapeType } from './shape-types';
+import { ShapeType, State } from './shape-types';
 
 /*
  * The MousePosition object
@@ -192,10 +192,12 @@ export class Path extends Shape {
     private static id: number = 0;
 
     public points: MousePosition[];
+    public state: State;
 
     constructor() {
         super('path-' + Path.id++);
         this.points = [];
+        this.state = State.None;
         console.log('Path constructor ', this);
     }
 }

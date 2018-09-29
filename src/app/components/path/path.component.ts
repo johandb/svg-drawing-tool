@@ -1,6 +1,6 @@
 import { ShapeComponent } from './../shape/shape.component';
 import { Component, OnInit } from '@angular/core';
-import { ShapeType } from '../../model/shape-types';
+import { ShapeType, State } from '../../model/shape-types';
 import { Path, MousePosition } from '../../model/shape';
 
 @Component({
@@ -15,7 +15,6 @@ export class PathComponent extends ShapeComponent implements OnInit {
 
     value: string = '';
     hasPoints: boolean = false;
-    isMoving: boolean = false;
 
     constructor() {
         super();
@@ -39,8 +38,9 @@ export class PathComponent extends ShapeComponent implements OnInit {
 
     setPoint(point: MousePosition): void {
         if (this.shape instanceof Path) {
-            if (this.isMoving) {
-                this.isMoving = false;
+            if (this.shape.state == State.Moving) {
+                this.shape.state = State.Finished;
+                this.hasPoints = false;
             } else {
                 this.lastPoint = Object.assign({}, point);
                 this.shape.points.push(this.lastPoint);
@@ -49,7 +49,7 @@ export class PathComponent extends ShapeComponent implements OnInit {
                     this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
                     this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + this.controlPoint.x + " " + this.controlPoint.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
                     this.hasPoints = false;
-                    this.isMoving = true;
+                    this.shape.state = State.Moving;
                 }
             }
         }
@@ -57,12 +57,10 @@ export class PathComponent extends ShapeComponent implements OnInit {
 
     draw(currentPosition: MousePosition): void {
         if (this.shape instanceof Path) {
-            if (this.isMoving) {
-                //var cp = this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
-                //this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
+            if (this.shape.state == State.Moving) {
                 this.controlPoint = Object.assign({}, currentPosition);
                 this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + this.controlPoint.x + " " + this.controlPoint.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
-            } else {
+            } else if (this.shape.state != State.Finished) {
                 this.lastPoint = Object.assign({}, currentPosition);
                 this.hasPoints = true;
             }
@@ -70,12 +68,10 @@ export class PathComponent extends ShapeComponent implements OnInit {
     }
 
     endDrawing(): void {
-        this.hasPoints = false;
-        this.isMoving = false;
-        // if (this.shape instanceof Path) {
-        //     var cp = this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
-        //     this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + cp.x + " " + cp.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
-        // }
+        if (this.shape instanceof Path) {
+            this.hasPoints = false;
+            this.shape.state = State.None;
+        }
     }
 
 
@@ -93,7 +89,5 @@ export class PathComponent extends ShapeComponent implements OnInit {
             x: c1x,
             y: c1y
         }
-        //console.log('controlpoint = ', cp);
-        //return cp;
     }
 }

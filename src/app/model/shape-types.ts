@@ -19,3 +19,10 @@ export enum ToolType {
     Flipvertical,
     Fliphorizontal
 }
+
+export enum State {
+    None,
+    Moving,
+    Finished
+
+}
