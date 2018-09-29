@@ -71,6 +71,8 @@ export class AppComponent implements OnInit {
 
     selectTool(toolType: string): void {
         this.selectedTool = ToolType[toolType];
+        this.selectedShape = ShapeType.NoShape;
+        this.shapeValue = ShapeType[this.selectedShape];
         console.log('selected tool:', toolType);
         if (this.selectedTool == ToolType.Pointer) {
             if (this.isSelectingPoints) {

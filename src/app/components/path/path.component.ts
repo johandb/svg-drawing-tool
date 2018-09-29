@@ -11,9 +11,11 @@ import { Path, MousePosition } from '../../model/shape';
 export class PathComponent extends ShapeComponent implements OnInit {
 
     lastPoint: MousePosition;
-    currentPoint: MousePosition;
+    controlPoint: MousePosition;
+
     value: string = '';
     hasPoints: boolean = false;
+    isMoving: boolean = false;
 
     constructor() {
         super();
@@ -37,33 +39,47 @@ export class PathComponent extends ShapeComponent implements OnInit {
 
     setPoint(point: MousePosition): void {
         if (this.shape instanceof Path) {
-            this.lastPoint = Object.assign({}, point);
-            this.shape.points.push(this.lastPoint);
-            console.log('points = ', this.shape.points);
-            //this.value += point.x + "," + point.y + " ";
-            console.log('PathComponent value ', this.value);
+            if (this.isMoving) {
+                this.isMoving = false;
+            } else {
+                this.lastPoint = Object.assign({}, point);
+                this.shape.points.push(this.lastPoint);
+                console.log('points = ', this.shape.points, ', size = ', this.shape.points.length, ', %2 = ', this.shape.points.length % 2);
+                if (this.shape.points.length % 2 == 0) {
+                    this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
+                    this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + this.controlPoint.x + " " + this.controlPoint.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
+                    this.hasPoints = false;
+                    this.isMoving = true;
+                }
+            }
         }
     }
 
     draw(currentPosition: MousePosition): void {
         if (this.shape instanceof Path) {
-            this.currentPoint = Object.assign({}, currentPosition);
-            this.hasPoints = true;
-            var cp = this.calculateControlPoint(null, null);
-            this.value = "M" + this.lastPoint.x + " " + this.lastPoint.y + " Q " + cp.x + " " + cp.y + " " + this.currentPoint.x + " " + this.currentPoint.y;
+            if (this.isMoving) {
+                //var cp = this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
+                //this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
+                this.controlPoint = Object.assign({}, currentPosition);
+                this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + this.controlPoint.x + " " + this.controlPoint.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
+            } else {
+                this.lastPoint = Object.assign({}, currentPosition);
+                this.hasPoints = true;
+            }
         }
     }
 
     endDrawing(): void {
-        if (this.shape instanceof Path) {
-            this.currentPoint = this.lastPoint;
-            var cp = this.calculateControlPoint(null, null);
-            this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + cp.x + " " + cp.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
-        }
+        this.hasPoints = false;
+        this.isMoving = false;
+        // if (this.shape instanceof Path) {
+        //     var cp = this.calculateControlPoint(this.shape.points[0], this.shape.points[1]);
+        //     this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + cp.x + " " + cp.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
+        // }
     }
 
 
-    private calculateControlPoint(p1: MousePosition, p2: MousePosition): MousePosition {
+    private calculateControlPoint(p1: MousePosition, p2: MousePosition): void {
         var mpx = (p2.x + p1.x) * 0.5;
         var mpy = (p2.y + p1.y) * 0.5;
 
@@ -73,11 +89,11 @@ export class PathComponent extends ShapeComponent implements OnInit {
         var c1x = mpx + offset * Math.cos(theta);
         var c1y = mpy + offset * Math.sin(theta);
 
-        var cp: MousePosition = {
+        this.controlPoint = {
             x: c1x,
             y: c1y
         }
-        console.log('controlpoint = ', cp);
-        return cp;
+        //console.log('controlpoint = ', cp);
+        //return cp;
     }
 }

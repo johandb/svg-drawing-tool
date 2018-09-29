@@ -1,4 +1,8 @@
 <ng-template #shapeTemplate>
+    <svg:line *ngIf="hasPoints" attr.x1="{{ shape.points[0].x }}" attr.y1="{{ shape.points[0].y }}" attr.x2="{{ lastPoint.x }}"
+        attr.y2="{{ lastPoint.y }}" [ngStyle]="setStyles()">
+    </svg:line>
+
     <svg:path attr.d="{{ value }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:path>
