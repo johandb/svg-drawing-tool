@@ -15,6 +15,7 @@ export class PathComponent extends ShapeComponent implements OnInit {
 
     value: string = '';
     hasPoints: boolean = false;
+    isMoving: boolean = false;
 
     constructor() {
         super();
@@ -41,6 +42,7 @@ export class PathComponent extends ShapeComponent implements OnInit {
             if (this.shape.state == State.Moving) {
                 this.shape.state = State.Finished;
                 this.hasPoints = false;
+                this.isMoving = false;
             } else {
                 this.lastPoint = Object.assign({}, point);
                 this.shape.points.push(this.lastPoint);
@@ -50,6 +52,7 @@ export class PathComponent extends ShapeComponent implements OnInit {
                     this.value = "M" + this.shape.points[0].x + " " + this.shape.points[0].y + " Q " + this.controlPoint.x + " " + this.controlPoint.y + " " + this.shape.points[1].x + " " + this.shape.points[1].y;
                     this.hasPoints = false;
                     this.shape.state = State.Moving;
+                    this.isMoving = true;
                 }
             }
         }

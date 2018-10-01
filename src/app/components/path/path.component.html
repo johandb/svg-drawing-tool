@@ -3,6 +3,16 @@
         attr.y2="{{ lastPoint.y }}" [ngStyle]="setStyles()">
     </svg:line>
 
+    <svg:circle *ngIf="isMoving" attr.cx="{{ shape.points[0].x }}" attr.cy="{{ shape.points[0].y }}" r="5" stroke="black"
+        stroke-width="1" fill="red">
+    </svg:circle>
+    <svg:circle *ngIf="isMoving" attr.cx="{{ shape.points[1].x }}" attr.cy="{{ shape.points[1].y }}" r="5" stroke="black"
+        stroke-width="1" fill="red">
+    </svg:circle>
+    <svg:circle *ngIf="isMoving" attr.cx="{{ controlPoint.x }}" attr.cy="{{ controlPoint.y }}" r="5" stroke="black"
+        stroke-width="1" fill="red">
+    </svg:circle>
+
     <svg:path attr.d="{{ value }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:path>
