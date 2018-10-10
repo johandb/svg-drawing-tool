@@ -66,6 +66,9 @@ export class AppComponent implements OnInit {
     }
 
     getShapes(): ShapeComponent[] {
+        // for (var i = 0; i < this.shapeService.getShapeComponents().length; i++) {
+        //     console.log('JSON : ', JSON.stringify(this.shapeService.getShapeComponents()[i].shape));
+        // }
         return this.shapeService.getShapeComponents();
     }
 
@@ -126,6 +129,7 @@ export class AppComponent implements OnInit {
         console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
+            this.shapeProperties = this.selectedComponent.shape.shapeProperties;
             console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
         } else if (this.selectedShape != ShapeType.NoShape && !this.isSelectingPoints) {
@@ -133,7 +137,6 @@ export class AppComponent implements OnInit {
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
             let component = factory.create(injector);
             this.shapeComponent = <ShapeComponent>component.instance;
-
             this.shapeService.setShapeComponent(this.shapeComponent);
 
             console.log('create component ', this.selectedShape);
