@@ -5,7 +5,7 @@ The SVG Drawing Tool is a web based tool to draw different kind of shapes like l
 
 How it Works
 ============
-Select a shape from the shape menu (line, circle) and click somewhere in the graphical space of the svg. Hold down the mouse and drag the shape to match its size. If you want to move a shape click on it and move the shape while holding down the mouse. Move to the new location. Shapes like line, polygon can not be moved.
+Select a shape from the shape menu (line, circle) and click somewhere in the graphical space of the svg. Hold down the mouse and drag the shape to match its size. If you want to move aShapes like line, polygon can not be moved.
 
 If drawing PolyGon select the point by mouse click. When finished select the Pointer tool from the tools menu.
 
