@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -20,6 +21,12 @@ import { GroupComponent } from './components/group/group.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
 import { PathComponent } from './components/path/path.component';
+import { DynamicFieldDirective } from './directives/dynamic-field.directive';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { CheckboxComponent } from './control/checkbox/checkbox.component';
+import { InputComponent } from './control/input/input.component';
+import { RadiobuttonComponent } from './control/radiobutton/radiobutton.component';
+import { SelectComponent } from './control/select/select.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +42,13 @@ import { PathComponent } from './components/path/path.component';
         GroupComponent,
         ImageComponent,
         PolyLineComponent,
-        PathComponent
+        PathComponent,
+        DynamicFieldDirective,
+        DynamicFormComponent,
+        CheckboxComponent,
+        InputComponent,
+        RadiobuttonComponent,
+        SelectComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -48,15 +61,21 @@ import { PathComponent } from './components/path/path.component';
         GroupComponent,
         ImageComponent,
         PolyLineComponent,
-        PathComponent
+        PathComponent,
+        InputComponent,
+        SelectComponent,
+        CheckboxComponent,
+        RadiobuttonComponent
     ], imports: [
         BrowserModule,
         ColorPickerModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         ShapeService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+
 })
 export class AppModule { }

@@ -1,0 +1,5 @@
+<div class="form-group" [formGroup]="group">
+    <ng-container *ngFor="let item of field.options">
+        <label class="radio-inline mr-2"><input type="radio" [formControlName]="field.name" [value]="item"> {{item}}</label>
+    </ng-container>
+</div>

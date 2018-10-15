@@ -49,4 +49,8 @@ export class LineComponent extends ShapeComponent implements OnInit {
         }
     }
 
+    drag(draqPosition: MousePosition): void {
+        console.log('line dragging');
+    }
+
 }

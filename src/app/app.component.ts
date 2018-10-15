@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
         console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
-            this.shapeProperties = this.selectedComponent.shape.shapeProperties;
+            this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
             console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
         } else if (this.selectedShape != ShapeType.NoShape && !this.isSelectingPoints) {

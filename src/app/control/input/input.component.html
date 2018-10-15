@@ -1,0 +1,7 @@
+<div class="form-group" [formGroup]="group">
+    <label>{{field.label}}</label>
+    <input formControlName="{{field.name}}" type="{{field.inputType}}" class="form-control" />
+    <ng-container *ngFor="let validation of field.validations;">
+        <div class="text-danger mt-2" *ngIf="group.get(field.name).invalid && (group.get(field.name).touched || group.get(field.name).dirty)">{{validation.message}}</div>
+    </ng-container>
+</div>

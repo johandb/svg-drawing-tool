@@ -3,7 +3,7 @@ import { ShapeComponent } from '../components/shape/shape.component';
 import { ShapeService } from '../service/shape.service';
 
 @Directive({
-    selector: '[svg-dynamic]'
+    selector: '[dynamic-svg]'
 })
 export class DynamicSvgDirective {
 
