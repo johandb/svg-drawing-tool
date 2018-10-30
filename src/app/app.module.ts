@@ -27,6 +27,7 @@ import { CheckboxComponent } from './control/checkbox/checkbox.component';
 import { InputComponent } from './control/input/input.component';
 import { RadiobuttonComponent } from './control/radiobutton/radiobutton.component';
 import { SelectComponent } from './control/select/select.component';
+import { ColorPickerComponent } from './control/color-picker/color-picker.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { SelectComponent } from './control/select/select.component';
         CheckboxComponent,
         InputComponent,
         RadiobuttonComponent,
-        SelectComponent
+        SelectComponent,
+        ColorPickerComponent
     ],
     entryComponents: [
         ShapeComponent,

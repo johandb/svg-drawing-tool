@@ -55,6 +55,7 @@ export class Shape implements BaseShape {
         this.shapeProperties = new ShapeProperties();
         this.originX = this.originY = 0;
         this.shapeProperties.name = name;
+        console.log('Shape constructor name : ', this.shapeProperties);
     }
 }
 

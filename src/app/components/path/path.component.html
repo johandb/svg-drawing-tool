@@ -13,7 +13,7 @@
         stroke-width="1" fill="red">
     </svg:circle>
 
-    <svg:path attr.d="{{ value }}" [ngStyle]="setStyles()">
+    <svg:path attr.d="{{ value }}" class="draggable" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:path>
 </ng-template>

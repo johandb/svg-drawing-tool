@@ -14,6 +14,7 @@ export class ShapeComponent implements OnInit {
     shape: Shape;
     shapeType: ShapeType;
     offset: MousePosition;
+    isSelected: boolean = false;
     selectionPoints: MousePosition[] = [];
 
     constructor() {

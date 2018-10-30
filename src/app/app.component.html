@@ -91,7 +91,7 @@
                         <div class="panel-body">
                             <div class="row nopadding">
                                 <div class="col-md-12">
-                                    <form class="form-horizontal">
+                                    <form #shapeForm="ngForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input class="form-control" type="text" [(ngModel)]="shapeProperties.name"
@@ -111,7 +111,8 @@
                                         </div>
                                         <div class="checkbox">
                                             <label><input type="checkbox" [(ngModel)]="shapeProperties.fill" name="fill"
-                                                    checked="shapeProperties.fill"> Fill</label>
+                                                    checked="shapeProperties.fill">
+                                                Fill</label>
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control color-text" [(ngModel)]="shapeProperties.fillColor"

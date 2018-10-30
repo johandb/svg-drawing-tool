@@ -1,4 +1,5 @@
-import { Component, ContentChild, TemplateRef, OnInit, ComponentFactoryResolver, ViewContainerRef, Injector } from '@angular/core';
+import { Component, ContentChild, TemplateRef, OnInit, ComponentFactoryResolver, ViewContainerRef, Injector, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { ShapeComponent } from './components/shape/shape.component';
 import { ShapeProperties, MousePosition } from './model/shape';
@@ -22,6 +23,8 @@ import { PathComponent } from './components/path/path.component';
 export class AppComponent implements OnInit {
     title = 'SVG Drawing Tool';
 
+    @ViewChild('shapeForm') ngForm: NgForm;
+
     svg: any;
     currentPosition: MousePosition = new MousePosition();
 
@@ -32,7 +35,7 @@ export class AppComponent implements OnInit {
 
     selectedTool: ToolType;
 
-    shapeComponent: ShapeComponent;
+    //shapeComponent: ShapeComponent;
     selectedComponent: ShapeComponent;
 
     isDragging: boolean = false;
@@ -49,13 +52,23 @@ export class AppComponent implements OnInit {
         this.svg = document.querySelector('svg');
         console.log('svg:', this.svg);
         this.selectedShape = ShapeType.NoShape;
+        this.ngForm.form.valueChanges.subscribe(x => {
+            if (this.selectedComponent) {
+                this.selectedComponent.shape.shapeProperties = Object.assign({}, x);
+                console.log('SHAPE!!!!!!! ', x);
+            }
+        })
         console.log('AppComponent shapeProperties:', this.shapeProperties);
+    }
+
+    ngOnChanges() {
     }
 
     selectShape(shapeType: string): void {
         this.selectedShape = ShapeType[shapeType];
         this.shapeValue = ShapeType[this.selectedShape];
         this.isSelectingPoints = false;
+        //this.shapeProperties = new ShapeProperties();
         console.log('selected shape:', this.selectedShape);
     }
 
@@ -79,7 +92,8 @@ export class AppComponent implements OnInit {
         console.log('selected tool:', toolType);
         if (this.selectedTool == ToolType.Pointer) {
             if (this.isSelectingPoints) {
-                this.shapeComponent.endDrawing();
+                //this.shapeComponent.endDrawing();
+                this.selectedComponent.endDrawing();
                 this.isSelectingPoints = false;
             }
         }
@@ -125,7 +139,7 @@ export class AppComponent implements OnInit {
 
     onMouseDown(event): void {
         this.getMousePosition(event);
-        console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.shapeComponent);
+        console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
         console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
@@ -136,29 +150,35 @@ export class AppComponent implements OnInit {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
             let component = factory.create(injector);
-            this.shapeComponent = <ShapeComponent>component.instance;
-            this.shapeService.setShapeComponent(this.shapeComponent);
+            this.selectedComponent = <ShapeComponent>component.instance;
+            this.shapeService.setShapeComponent(this.selectedComponent);
 
             console.log('create component ', this.selectedShape);
-            console.log('component : ', this.shapeComponent);
-            this.shapeComponent.shape.shapeProperties.fillColor = this.shapeProperties.fillColor;
-            this.shapeComponent.shape.shapeProperties.strokeColor = this.shapeProperties.strokeColor;
-            this.shapeComponent.shape.shapeProperties.strokeWidth = this.shapeProperties.strokeWidth;
-            this.shapeProperties.name = this.shapeComponent.shape.shapeProperties.name;
-            console.log('component shape : ', this.shapeComponent.shape);
+            console.log('component : ', this.selectedComponent);
+            this.shapeProperties = new ShapeProperties();
+            this.shapeProperties.name = this.selectedComponent.shape.shapeProperties.name;
+            // this.shapeComponent.shape.shapeProperties = this.shapeProperties;
+            this.selectedComponent.shape.shapeProperties = Object.assign({}, this.shapeProperties);
+
+            // this.shapeComponent.shape.shapeProperties.fillColor = this.shapeProperties.fillColor;
+            // this.shapeComponent.shape.shapeProperties.strokeColor = this.shapeProperties.strokeColor;
+            // this.shapeComponent.shape.shapeProperties.strokeWidth = this.shapeProperties.strokeWidth;
+            console.log('this.shapeproperties ', this.shapeProperties);
+            console.log('this.shapeComponent.shapeproperties ', this.selectedComponent.shape.shapeProperties);
+            console.log('component shape : ', this.selectedComponent.shape);
             if (this.canSelectPoints()) {
                 this.isSelectingPoints = true;
             } else {
                 this.isDrawing = true;
-                this.shapeComponent.startDrawing(this.currentPosition);
+                this.selectedComponent.startDrawing(this.currentPosition);
             }
         }
     }
 
     onMouseMove(event): void {
         this.getMousePosition(event);
-        if (this.shapeComponent && (this.isDrawing || this.isSelectingPoints)) {
-            this.shapeComponent.draw(this.currentPosition);
+        if (this.selectedComponent && (this.isDrawing || this.isSelectingPoints)) {
+            this.selectedComponent.draw(this.currentPosition);
         } else if (this.selectedComponent && this.isDragging) {
             console.log('DRAGGING move !!!');
             this.selectedComponent.drag(this.currentPosition);
@@ -170,14 +190,13 @@ export class AppComponent implements OnInit {
         this.getMousePosition(event);
         console.log('mouse up svg : ', this.shapeService.getShapeComponents());
         if (this.isSelectingPoints) {
-            console.log('SELECT POINTS!!!! ', this.shapeComponent);
-            this.shapeComponent.setPoint(this.currentPosition);
+            console.log('SELECT POINTS!!!! ', this.selectedComponent);
+            this.selectedComponent.setPoint(this.currentPosition);
         }
-        //this.selectedShape = ShapeType.NoShape;
+        this.selectedShape = ShapeType.NoShape;
         this.shapeValue = ShapeType[this.selectedShape];
         this.isDrawing = false;
         this.isDragging = false;
-        this.selectedComponent = null;
     }
 
     startDragging(event): void {
