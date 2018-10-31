@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
 
     onMouseDown(event): void {
         this.getMousePosition(event);
-        console.log('mouse down svg : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
+        console.log('mouse down SVG : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
         console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
