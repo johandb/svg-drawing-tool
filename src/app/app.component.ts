@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
 
     selectedTool: ToolType;
 
-    //shapeComponent: ShapeComponent;
     selectedComponent: ShapeComponent;
 
     isDragging: boolean = false;
@@ -92,7 +91,6 @@ export class AppComponent implements OnInit {
         console.log('selected tool:', toolType);
         if (this.selectedTool == ToolType.Pointer) {
             if (this.isSelectingPoints) {
-                //this.shapeComponent.endDrawing();
                 this.selectedComponent.endDrawing();
                 this.isSelectingPoints = false;
             }
@@ -143,6 +141,7 @@ export class AppComponent implements OnInit {
         console.log('isSelectingPoints :', this.isSelectingPoints);
         if (event.target.classList.contains('draggable')) {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
+            this.selectedComponent.isSelected = true;
             this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
             console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
             this.startDragging(event);
@@ -157,12 +156,8 @@ export class AppComponent implements OnInit {
             console.log('component : ', this.selectedComponent);
             this.shapeProperties = new ShapeProperties();
             this.shapeProperties.name = this.selectedComponent.shape.shapeProperties.name;
-            // this.shapeComponent.shape.shapeProperties = this.shapeProperties;
             this.selectedComponent.shape.shapeProperties = Object.assign({}, this.shapeProperties);
 
-            // this.shapeComponent.shape.shapeProperties.fillColor = this.shapeProperties.fillColor;
-            // this.shapeComponent.shape.shapeProperties.strokeColor = this.shapeProperties.strokeColor;
-            // this.shapeComponent.shape.shapeProperties.strokeWidth = this.shapeProperties.strokeWidth;
             console.log('this.shapeproperties ', this.shapeProperties);
             console.log('this.shapeComponent.shapeproperties ', this.selectedComponent.shape.shapeProperties);
             console.log('component shape : ', this.selectedComponent.shape);
