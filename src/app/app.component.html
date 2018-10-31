@@ -145,7 +145,10 @@
                 <div class="col-md-3">
                     <p>Selected Shape : {{ this.shapeValue }}</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
+                    <p>Shape count : {{ this.shapeService.getShapeComponents().length }}</p>
+                </div>
+                <div class="col-md-3">
                     <button (click)="clearShapes()" type="button" class="btn btn-light">Clear</button>
                 </div>
             </div>

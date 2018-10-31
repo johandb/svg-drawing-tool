@@ -3,17 +3,19 @@
         attr.y2="{{ lastPoint.y }}" [ngStyle]="setStyles()">
     </svg:line>
 
-    <svg:circle *ngIf="isMoving" attr.cx="{{ shape.points[0].x }}" attr.cy="{{ shape.points[0].y }}" r="4" stroke="black"
-        stroke-width="1" fill="green">
-    </svg:circle>
-    <svg:circle *ngIf="isMoving" attr.cx="{{ shape.points[1].x }}" attr.cy="{{ shape.points[1].y }}" r="4" stroke="black"
-        stroke-width="1" fill="green">
-    </svg:circle>
-    <svg:circle *ngIf="isMoving" attr.cx="{{ controlPoint.x }}" attr.cy="{{ controlPoint.y }}" r="4" stroke="black"
-        stroke-width="1" fill="green">
-    </svg:circle>
+    <svg:g *ngIf="isSelected || isMoving">
+        <svg:circle attr.cx="{{ shape.points[0].x }}" attr.cy="{{ shape.points[0].y }}" r="4" stroke="black"
+            stroke-width="1" fill="green">
+        </svg:circle>
+        <svg:circle attr.cx="{{ shape.points[1].x }}" attr.cy="{{ shape.points[1].y }}" r="4" stroke="black"
+            stroke-width="1" fill="green">
+        </svg:circle>
+        <svg:circle attr.cx="{{ controlPoint.x }}" attr.cy="{{ controlPoint.y }}" r="4" stroke="black" stroke-width="1"
+            fill="green">
+        </svg:circle>
+    </svg:g>
 
-    <svg:path attr.d="{{ value }}" class="draggable" [ngStyle]="setStyles()">
+    <svg:path attr.id="{{ shape.shapeProperties.name }}" attr.d="{{ value }}" class="draggable" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:path>
 </ng-template>

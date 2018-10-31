@@ -138,13 +138,17 @@ export class AppComponent implements OnInit {
     onMouseDown(event): void {
         this.getMousePosition(event);
         console.log('mouse down SVG : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
-        console.log('isSelectingPoints :', this.isSelectingPoints);
+        console.log('shape list :', this.shapeService.getShapeComponents());
         if (event.target.classList.contains('draggable')) {
+            console.log('CLASS is DRAGGABLE!!!!!!');
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
-            this.selectedComponent.isSelected = true;
-            this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
-            console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
-            this.startDragging(event);
+            if (this.selectedComponent) {
+                console.log('FOUND COMPONENT:', this.selectedComponent);
+                this.selectedComponent.isSelected = true;
+                this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
+                console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
+                this.startDragging(event);
+            }
         } else if (this.selectedShape != ShapeType.NoShape && !this.isSelectingPoints) {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
