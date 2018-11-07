@@ -146,12 +146,12 @@ export class AppComponent implements OnInit {
         this.getMousePosition(event);
         console.log('mouse down SVG : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
         console.log('shape list :', this.shapeService.getShapeComponents());
+        this.deSelectComponents();
         if (event.target.classList.contains('draggable')) {
             console.log('CLASS is DRAGGABLE!!!!!!');
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
             if (this.selectedComponent) {
                 console.log('FOUND COMPONENT:', this.selectedComponent);
-                this.deSelectComponents();
                 this.selectedComponent.isSelected = true;
                 this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
                 console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
@@ -179,8 +179,6 @@ export class AppComponent implements OnInit {
                 this.isDrawing = true;
                 this.selectedComponent.startDrawing(this.currentPosition);
             }
-        } else {
-            this.deSelectComponents();
         }
     }
 
