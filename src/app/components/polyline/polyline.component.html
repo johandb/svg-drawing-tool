@@ -3,7 +3,7 @@
         attr.y2="{{ currentPoint.y }}" [ngStyle]="setStyles()">
     </svg:line>
 
-    <svg:polyline class="draggable" attr.points="{{ value }}" [ngStyle]="setStyles()">
+    <svg:polyline attr.id="{{ shape.shapeProperties.name }}" class="draggable" attr.points="{{ value }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:polyline>
 </ng-template>

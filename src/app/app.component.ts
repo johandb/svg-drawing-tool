@@ -135,6 +135,13 @@ export class AppComponent implements OnInit {
         return false;
     }
 
+    deSelectComponents() {
+        var shapes = this.getShapes();
+        for (var i = 0; i < shapes.length; i++) {
+            shapes[i].isSelected = false;
+        }
+    }
+
     onMouseDown(event): void {
         this.getMousePosition(event);
         console.log('mouse down SVG : ', this.currentPosition, ', ', event, ', selectedComponent ', this.selectedComponent);
@@ -144,6 +151,7 @@ export class AppComponent implements OnInit {
             this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
             if (this.selectedComponent) {
                 console.log('FOUND COMPONENT:', this.selectedComponent);
+                this.deSelectComponents();
                 this.selectedComponent.isSelected = true;
                 this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
                 console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
@@ -171,6 +179,8 @@ export class AppComponent implements OnInit {
                 this.isDrawing = true;
                 this.selectedComponent.startDrawing(this.currentPosition);
             }
+        } else {
+            this.deSelectComponents();
         }
     }
 
@@ -212,4 +222,11 @@ export class AppComponent implements OnInit {
         this.selectedComponent = null;
         console.log('endDragging()');
     }
+
+    rgbToHex(r, g, b) {
+        if (r > 255 || g > 255 || b > 255)
+            throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
+    }
+
 }
