@@ -35,9 +35,9 @@ export class ShapeService {
 
     findShapeComponent(name: string): ShapeComponent {
         console.log('find name : ', name);
-        for (var i = 0; i < this.shapesComponents.length; i++) {
-            console.log('FIND JSON : ', JSON.stringify(this.shapesComponents[i].shape));
-        }
+        // for (var i = 0; i < this.shapesComponents.length; i++) {
+        //     console.log('FIND JSON : ', JSON.stringify(this.shapesComponents[i].shape));
+        // }
 
         return this.shapesComponents.find(x => x.shape.shapeProperties.name == name);
     }

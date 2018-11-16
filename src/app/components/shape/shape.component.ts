@@ -52,5 +52,8 @@ export class ShapeComponent implements OnInit {
         this.shape.originY = (draqPosition.y - this.offset.y);
     }
 
+    resizeShape(resizePosition: MousePosition) {
+        console.log('ShapeComponent: resizeShape ', resizePosition);
+    }
 
 }

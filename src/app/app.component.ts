@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
 
     isDragging: boolean = false;
     isDrawing: boolean = false;
+    isResizing: boolean = false;
     isSelectingPoints: boolean = false;
 
     @ContentChild(TemplateRef) shapeTemplate: TemplateRef<any>;
@@ -54,7 +55,6 @@ export class AppComponent implements OnInit {
         this.ngForm.form.valueChanges.subscribe(x => {
             if (this.selectedComponent) {
                 this.selectedComponent.shape.shapeProperties = Object.assign({}, x);
-                console.log('SHAPE!!!!!!! ', x);
             }
         })
         console.log('AppComponent shapeProperties:', this.shapeProperties);
@@ -67,7 +67,6 @@ export class AppComponent implements OnInit {
         this.selectedShape = ShapeType[shapeType];
         this.shapeValue = ShapeType[this.selectedShape];
         this.isSelectingPoints = false;
-        //this.shapeProperties = new ShapeProperties();
         console.log('selected shape:', this.selectedShape);
     }
 
@@ -78,9 +77,6 @@ export class AppComponent implements OnInit {
     }
 
     getShapes(): ShapeComponent[] {
-        // for (var i = 0; i < this.shapeService.getShapeComponents().length; i++) {
-        //     console.log('JSON : ', JSON.stringify(this.shapeService.getShapeComponents()[i].shape));
-        // }
         return this.shapeService.getShapeComponents();
     }
 
@@ -157,6 +153,13 @@ export class AppComponent implements OnInit {
                 console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
                 this.startDragging(event);
             }
+        } else if (event.target.classList.contains('resize')) {
+            console.log('CLASS is RESIZE!!!!!!');
+            this.selectedComponent = this.shapeService.findShapeComponent(event.target.id);
+            if (this.selectedComponent) {
+                console.log('FOUND RESIZECOMPONENT:', this.selectedComponent);
+                this.isResizing = true;
+            }
         } else if (this.selectedShape != ShapeType.NoShape && !this.isSelectingPoints) {
             let injector = Injector.create([], this.viewContainerRef.parentInjector);
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.buildComponent(this.selectedShape));
@@ -189,8 +192,10 @@ export class AppComponent implements OnInit {
         } else if (this.selectedComponent && this.isDragging) {
             console.log('DRAGGING move !!!');
             this.selectedComponent.drag(this.currentPosition);
+        } else if (this.isResizing) {
+            console.log('RESIZING move !!!');
+            this.selectedComponent.resizeShape(this.currentPosition);
         }
-        //console.log('currentPosition:', this.currentPosition);
     }
 
     onMouseUp(event): void {
@@ -204,6 +209,7 @@ export class AppComponent implements OnInit {
         this.shapeValue = ShapeType[this.selectedShape];
         this.isDrawing = false;
         this.isDragging = false;
+        this.isResizing = false;
     }
 
     startDragging(event): void {

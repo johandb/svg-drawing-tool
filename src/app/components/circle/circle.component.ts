@@ -53,5 +53,9 @@ export class CircleComponent extends ShapeComponent implements OnInit {
 
     }
 
+    resizeShape(resizePosition: MousePosition) {
+        console.log('CircleComponent: resizeShape ', resizePosition);
+    }
+
 
 }
