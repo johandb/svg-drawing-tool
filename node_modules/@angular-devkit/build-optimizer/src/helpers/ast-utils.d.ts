@@ -7,7 +7,3 @@
  */
 import * as ts from 'typescript';
 export declare function collectDeepNodes<T extends ts.Node>(node: ts.Node, kind: ts.SyntaxKind): T[];
-export declare function drilldownNodes<T extends ts.Node>(startingNode: T, path: {
-    prop: keyof T;
-    kind: ts.SyntaxKind;
-}[]): T | null;

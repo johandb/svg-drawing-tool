@@ -8,7 +8,7 @@
 /**
  * Represents a meta element.
  *
- * @experimental
+ * @publicApi
  */
 export declare type MetaDefinition = {
     charset?: string;
@@ -30,7 +30,7 @@ export declare function createMeta(): Meta;
 /**
  * A service that can be used to get and add meta tags.
  *
- * @experimental
+ * @publicApi
  */
 export declare class Meta {
     private _doc;

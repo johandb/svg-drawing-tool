@@ -32,6 +32,7 @@ import { URLSearchParams } from './url_search_params';
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class RequestOptions {
     /**
@@ -134,6 +135,7 @@ export declare class RequestOptions {
  * ```
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class BaseRequestOptions extends RequestOptions {
     constructor();

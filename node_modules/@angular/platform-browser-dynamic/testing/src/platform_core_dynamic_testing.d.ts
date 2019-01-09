@@ -9,6 +9,6 @@ import { PlatformRef } from '@angular/core';
 /**
  * Platform for dynamic tests
  *
- * @experimental
+ * @publicApi
  */
 export declare const platformCoreDynamicTesting: (extraProviders?: any[]) => PlatformRef;

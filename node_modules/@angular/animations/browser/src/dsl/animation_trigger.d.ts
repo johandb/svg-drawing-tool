@@ -9,11 +9,11 @@ import { ɵStyleData } from '@angular/animations';
 import { TriggerAst } from './animation_ast';
 import { AnimationStateStyles, AnimationTransitionFactory } from './animation_transition_factory';
 /**
- * @experimental Animation support is experimental.
+ * @publicApi
  */
 export declare function buildTrigger(name: string, ast: TriggerAst): AnimationTrigger;
 /**
-* @experimental Animation support is experimental.
+* @publicApi
 */
 export declare class AnimationTrigger {
     name: string;

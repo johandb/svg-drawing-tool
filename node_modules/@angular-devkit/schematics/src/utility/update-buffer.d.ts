@@ -57,6 +57,12 @@ export declare class UpdateBuffer {
     constructor(_originalContent: Buffer);
     protected _assertIndex(index: number): void;
     protected _slice(start: number): [Chunk, Chunk];
+    /**
+     * Gets the position in the content based on the position in the string.
+     * Some characters might be wider than one byte, thus we have to determine the position using
+     * string functions.
+     */
+    protected _getTextPosition(index: number): number;
     readonly length: number;
     readonly original: Buffer;
     toString(encoding?: string): string;

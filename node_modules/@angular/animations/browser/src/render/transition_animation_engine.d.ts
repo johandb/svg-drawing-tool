@@ -132,7 +132,7 @@ export declare class TransitionAnimationPlayer implements AnimationPlayer {
     private _player;
     private _containsRealPlayer;
     private _queuedCallbacks;
-    readonly destroyed: boolean;
+    readonly destroyed = false;
     parentPlayer: AnimationPlayer;
     markedForDestroy: boolean;
     disabled: boolean;

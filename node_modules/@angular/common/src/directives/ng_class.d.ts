@@ -32,7 +32,7 @@ import { DoCheck, ElementRef, IterableDiffers, KeyValueDiffers, Renderer2 } from
  * - `Object` - keys are CSS classes that get added when the expression given in the value
  *              evaluates to a truthy value, otherwise they are removed.
  *
- *
+ * @publicApi
  */
 export declare class NgClass implements DoCheck {
     private _iterableDiffers;

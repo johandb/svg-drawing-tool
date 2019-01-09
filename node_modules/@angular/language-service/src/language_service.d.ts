@@ -10,6 +10,6 @@ import { LanguageService, LanguageServiceHost } from './types';
 /**
  * Create an instance of an Angular `LanguageService`.
  *
- * @experimental
+ * @publicApi
  */
 export declare function createLanguageService(host: LanguageServiceHost): LanguageService;

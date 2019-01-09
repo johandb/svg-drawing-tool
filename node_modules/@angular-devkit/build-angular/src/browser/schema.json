@@ -12,15 +12,16 @@
     },
     "main": {
       "type": "string",
-      "description": "The name of the main entry-point file."
+      "description": "The full path for the main entry point to the app, relative to the current workspace.",
+      "$valueDescription": "fileName"
     },
     "polyfills": {
       "type": "string",
-      "description": "The name of the polyfills file."
+      "description": "The full path for the polyfills file, relative to the current workspace."
     },
     "tsConfig": {
       "type": "string",
-      "description": "The name of the TypeScript configuration file."
+      "description": "The full path for the TypeScript configuration file, relative to the current workspace."
     },
     "scripts": {
       "description": "Global scripts to be included in the build.",
@@ -54,9 +55,28 @@
       "additionalProperties": false
     },
     "optimization": {
-      "type": "boolean",
       "description": "Enables optimization of the build output.",
-      "default": false
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "boolean",
+              "description": "Enables optimization of the scripts output.",
+              "default": true
+            },
+            "styles": {
+              "type": "boolean",
+              "description": "Enables optimization of the styles output.",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "fileReplacements": {
       "description": "Replace files with other files in the build.",
@@ -68,7 +88,12 @@
     },
     "outputPath": {
       "type": "string",
-      "description": "Path where output will be placed."
+      "description": "The full path for the new output directory, relative to the current workspace.\n\nBy default, writes output to a folder named dist/ in the current project."
+    },
+    "resourcesOutputPath": {
+      "type": "string",
+      "description": "The path where style resources will be placed, relative to outputPath.",
+      "default": ""
     },
     "aot": {
       "type": "boolean",
@@ -76,19 +101,51 @@
       "default": false
     },
     "sourceMap": {
-      "type": "boolean",
       "description": "Output sourcemaps.",
-      "default": true
+      "default": true,
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all scripts.",
+              "default": true
+            },
+            "styles": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all styles.",
+              "default": true
+            },
+            "hidden": {
+              "type": "boolean",
+              "description": "Output sourcemaps used for error reporting tools.",
+              "default": false
+            },
+            "vendor": {
+              "type": "boolean",
+              "description": "Resolve vendor packages sourcemaps.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "vendorSourceMap": {
       "type": "boolean",
       "description": "Resolve vendor packages sourcemaps.",
+      "x-deprecated": true,
       "default": false
     },
     "evalSourceMap": {
       "type": "boolean",
       "description": "Output in-file eval sourcemaps.",
-      "default": false
+      "default": false,
+      "x-deprecated": true
     },
     "vendorChunk": {
       "type": "boolean",
@@ -135,7 +192,7 @@
     },
     "extractCss": {
       "type": "boolean",
-      "description": "Extract css from global styles onto css files instead of js ones.",
+      "description": "Extract css from global styles into css files instead of js ones.",
       "default": false
     },
     "watch": {
@@ -170,8 +227,8 @@
     },
     "extractLicenses": {
       "type": "boolean",
-      "description": "Extract all licenses in a separate file, in the case of production builds only.",
-      "default": true
+      "description": "Extract all licenses in a separate file.",
+      "default": false
     },
     "showCircularDependencies": {
       "type": "boolean",
@@ -180,7 +237,7 @@
     },
     "buildOptimizer": {
       "type": "boolean",
-      "description": "Enables @angular-devkit/build-optimizer optimizations when using the 'aot' option.",
+      "description": "Enables '@angular-devkit/build-optimizer' optimizations when using the 'aot' option.",
       "default": false
     },
     "namedChunks": {
@@ -205,7 +262,8 @@
     "skipAppShell": {
       "type": "boolean",
       "description": "Flag to prevent building an app shell.",
-      "default": false
+      "default": false,
+      "x-deprecated": true
     },
     "index": {
       "type": "string",
@@ -213,7 +271,7 @@
     },
     "statsJson": {
       "type": "boolean",
-      "description": "Generates a 'stats.json' file which can be analyzed using tools such as: #webpack-bundle-analyzer' or https: //webpack.github.io/analyse.",
+      "description": "Generates a 'stats.json' file which can be analyzed using tools such as: 'webpack-bundle-analyzer' or https://webpack.github.io/analyse.",
       "default": false
     },
     "forkTypeChecker": {
@@ -222,7 +280,7 @@
       "default": true
     },
     "lazyModules": {
-      "description": "List of additional NgModule files that will be lazy loaded. Lazy router modules with be discovered automatically.",
+      "description": "List of additional NgModule files that will be lazy loaded. Lazy router modules will be discovered automatically.",
       "type": "array",
       "items": {
         "type": "string"
@@ -236,6 +294,11 @@
         "$ref": "#/definitions/budget"
       },
       "default": []
+    },
+    "profile": {
+      "type": "boolean",
+      "description": "Output profile events for Chrome profiler.",
+      "default": false
     }
   },
   "additionalProperties": false,
@@ -257,7 +320,14 @@
             },
             "input": {
               "type": "string",
-              "description": "The input path dir in which to apply 'glob'. Defaults to the project root."
+              "description": "The input directory path in which to apply 'glob'. Defaults to the project root."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "output": {
               "type": "string",

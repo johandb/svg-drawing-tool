@@ -37,7 +37,7 @@ import { SwitchView } from './ng_switch';
  *
  * See http://cldr.unicode.org/index/cldr-spec/plural-rules
  *
- * @experimental
+ * @publicApi
  */
 export declare class NgPlural {
     private _localization;
@@ -69,7 +69,7 @@ export declare class NgPlural {
  *
  * See {@link NgPlural} for more details and example.
  *
- * @experimental
+ * @publicApi
  */
 export declare class NgPluralCase {
     value: string;

@@ -14,6 +14,7 @@ import * as ts from 'typescript';
 export declare type VisitListEntryResult<B extends ts.Node, T extends B> = {
     node: T;
     before?: B[];
+    after?: B[];
 };
 /**
  * Visit a node with the given visitor and return a transformed copy.
@@ -28,6 +29,10 @@ export declare abstract class Visitor {
      * Maps statements to an array of statements that should be inserted before them.
      */
     private _before;
+    /**
+     * Maps statements to an array of statements that should be inserted after them.
+     */
+    private _after;
     /**
      * Visit a class declaration, returning at least the transformed declaration and optionally other
      * nodes to insert before the declaration.

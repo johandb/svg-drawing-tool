@@ -9,9 +9,10 @@ import { JsonObject } from '@angular-devkit/core';
 import { TaskConfiguration, TaskConfigurationGenerator } from '../../src';
 import { TslintFixTaskOptions, TslintFixTaskOptionsBase } from './options';
 export declare class TslintFixTask implements TaskConfigurationGenerator<TslintFixTaskOptions> {
-    protected _configOrPath: string | JsonObject;
+    protected _configOrPath: null | string | JsonObject;
     protected _options: TslintFixTaskOptionsBase;
     constructor(config: JsonObject, options: TslintFixTaskOptionsBase);
+    constructor(options: TslintFixTaskOptionsBase);
     constructor(path: string, options: TslintFixTaskOptionsBase);
     toConfiguration(): TaskConfiguration<TslintFixTaskOptions>;
 }

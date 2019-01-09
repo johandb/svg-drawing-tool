@@ -33,6 +33,9 @@ export interface TaskInfo {
     readonly configuration: TaskConfiguration;
     readonly context: SchematicContext;
 }
+export interface ExecutionOptions {
+    interactive: boolean;
+}
 /**
  * The description (metadata) of a collection. This type contains every information the engine
  * needs to run. The CollectionMetadataT type parameter contains additional metadata that you
@@ -68,7 +71,7 @@ export interface EngineHost<CollectionMetadataT extends object, SchematicMetadat
     createSchematicDescription(name: string, collection: CollectionDescription<CollectionMetadataT>): SchematicDescription<CollectionMetadataT, SchematicMetadataT> | null;
     getSchematicRuleFactory<OptionT extends object>(schematic: SchematicDescription<CollectionMetadataT, SchematicMetadataT>, collection: CollectionDescription<CollectionMetadataT>): RuleFactory<OptionT>;
     createSourceFromUrl(url: Url, context: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): Source | null;
-    transformOptions<OptionT extends object, ResultT extends object>(schematic: SchematicDescription<CollectionMetadataT, SchematicMetadataT>, options: OptionT): Observable<ResultT>;
+    transformOptions<OptionT extends object, ResultT extends object>(schematic: SchematicDescription<CollectionMetadataT, SchematicMetadataT>, options: OptionT, context?: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): Observable<ResultT>;
     transformContext(context: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): TypedSchematicContext<CollectionMetadataT, SchematicMetadataT> | void;
     createTaskExecutor(name: string): Observable<TaskExecutor>;
     hasTaskExecutor(name: string): boolean;
@@ -86,10 +89,10 @@ export interface EngineHost<CollectionMetadataT extends object, SchematicMetadat
  */
 export interface Engine<CollectionMetadataT extends object, SchematicMetadataT extends object> {
     createCollection(name: string): Collection<CollectionMetadataT, SchematicMetadataT>;
-    createContext(schematic: Schematic<CollectionMetadataT, SchematicMetadataT>, parent?: Partial<TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>>): TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>;
+    createContext(schematic: Schematic<CollectionMetadataT, SchematicMetadataT>, parent?: Partial<TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>>, executionOptions?: Partial<ExecutionOptions>): TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>;
     createSchematic(name: string, collection: Collection<CollectionMetadataT, SchematicMetadataT>): Schematic<CollectionMetadataT, SchematicMetadataT>;
     createSourceFromUrl(url: Url, context: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): Source;
-    transformOptions<OptionT extends object, ResultT extends object>(schematic: Schematic<CollectionMetadataT, SchematicMetadataT>, options: OptionT): Observable<ResultT>;
+    transformOptions<OptionT extends object, ResultT extends object>(schematic: Schematic<CollectionMetadataT, SchematicMetadataT>, options: OptionT, context?: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): Observable<ResultT>;
     executePostTasks(): Observable<void>;
     readonly defaultMergeStrategy: MergeStrategy;
     readonly workflow: Workflow | null;
@@ -111,7 +114,7 @@ export interface Collection<CollectionMetadataT extends object, SchematicMetadat
 export interface Schematic<CollectionMetadataT extends object, SchematicMetadataT extends object> {
     readonly description: SchematicDescription<CollectionMetadataT, SchematicMetadataT>;
     readonly collection: Collection<CollectionMetadataT, SchematicMetadataT>;
-    call<OptionT extends object>(options: OptionT, host: Observable<Tree>, parentContext?: Partial<TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>>): Observable<Tree>;
+    call<OptionT extends object>(options: OptionT, host: Observable<Tree>, parentContext?: Partial<TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>>, executionOptions?: Partial<ExecutionOptions>): Observable<Tree>;
 }
 /**
  * A SchematicContext. Contains information necessary for Schematics to execute some rules, for
@@ -123,6 +126,7 @@ export interface TypedSchematicContext<CollectionMetadataT extends object, Schem
     readonly logger: logging.LoggerApi;
     readonly schematic: Schematic<CollectionMetadataT, SchematicMetadataT>;
     readonly strategy: MergeStrategy;
+    readonly interactive: boolean;
     addTask<T>(task: TaskConfigurationGenerator<T>, dependencies?: Array<TaskId>): TaskId;
 }
 /**

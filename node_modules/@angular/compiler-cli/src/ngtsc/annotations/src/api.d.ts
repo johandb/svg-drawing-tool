@@ -7,6 +7,6 @@
  */
 /// <amd-module name="@angular/compiler-cli/src/ngtsc/annotations/src/api" />
 export interface ResourceLoader {
-    preload?(url: string): Promise<void> | undefined;
-    load(url: string): string;
+    preload?(url: string, containingFile: string): Promise<void> | undefined;
+    load(url: string, containingFile: string): string;
 }

@@ -90,3 +90,15 @@ export declare function underscore(str: string): string;
  @return {String} The capitalized string.
  */
 export declare function capitalize(str: string): string;
+/**
+ * Calculate the levenshtein distance of two strings.
+ * See https://en.wikipedia.org/wiki/Levenshtein_distance.
+ * Based off https://gist.github.com/andrei-m/982927 (for using the faster dynamic programming
+ * version).
+ *
+ * @param a String a.
+ * @param b String b.
+ * @returns A number that represents the distance between the two strings. The greater the number
+ *   the more distant the strings are from each others.
+ */
+export declare function levenshtein(a: string, b: string): number;

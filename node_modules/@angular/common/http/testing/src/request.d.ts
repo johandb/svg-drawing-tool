@@ -13,7 +13,7 @@ import { Observer } from 'rxjs';
  * This interface allows access to the underlying `HttpRequest`, and allows
  * responding with `HttpEvent`s or `HttpErrorResponse`s.
  *
- *
+ * @publicApi
  */
 export declare class TestRequest {
     request: HttpRequest<any>;

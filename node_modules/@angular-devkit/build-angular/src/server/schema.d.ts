@@ -5,15 +5,19 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+
+import {
+  BrowserBuilderSchema,
+  FileReplacement,
+  OptimizationObject,
+  SourceMapOptions,
+} from '../browser/schema';
+
 export interface BuildWebpackServerSchema {
   /**
    * The name of the TypeScript configuration file.
    */
   tsConfig: string;
-  /**
-   * Output sourcemaps.
-   */
-  sourceMap?: boolean;
   /**
    * Adds more details to output logging.
    */
@@ -35,11 +39,17 @@ export interface BuildWebpackServerSchema {
    */
   vendorChunk?: boolean;
   /**
+   * Output sourcemaps.
+   */
+  sourceMap: SourceMapOptions;
+  /**
    * Resolve vendor packages sourcemaps.
+   * @deprecated use sourceMap.vendor
    */
   vendorSourceMap?: boolean;
   /**
    * Output in-file eval sourcemaps.
+   * @deprecated
    */
   evalSourceMap?: boolean;
   /**
@@ -47,8 +57,12 @@ export interface BuildWebpackServerSchema {
    */
   outputPath: string;
   /**
+ * Path where style resources will be placed (Relative to outputPath).
+ */
+  resourcesOutputPath: string;
+  /**
    * Generates a 'stats.json' file which can be analyzed using tools such as:
-   * #webpack-bundle-analyzer' or https: //webpack.github.io/analyse.
+   * #webpack-bundle-analyzer' or https://webpack.github.io/analyse.
    */
   statsJson?: boolean;
   /**
@@ -63,7 +77,7 @@ export interface BuildWebpackServerSchema {
   /**
    * Enables optimization of the build output.
    */
-  optimization?: boolean;
+  optimization?: OptimizationObject;
   /**
    * Log progress to the console while building.
    */
@@ -80,7 +94,7 @@ export interface BuildWebpackServerSchema {
   /**
    * Replace files with other files in the build.
    */
-  fileReplacements: FileReplacements[];
+  fileReplacements: FileReplacement[];
   /**
    * Define the output filename cache-busting hashing mode.
    */
@@ -125,9 +139,9 @@ export interface BuildWebpackServerSchema {
    * Run build when files change.
    */
   watch?: boolean;
-    /**
-   * Enable and define the file watching poll time period in milliseconds.
-   */
+  /**
+ * Enable and define the file watching poll time period in milliseconds.
+ */
   poll?: number;
 }
 
@@ -158,4 +172,13 @@ export interface StylePreprocessorOptions {
    * Paths to include. Paths will be resolved to project root.
    */
   includePaths?: string[];
+}
+
+export interface NormalizedServerBuilderServerSchema extends Pick<
+  BuildWebpackServerSchema,
+  Exclude<keyof BuildWebpackServerSchema, 'sourceMap' | 'optimization'>
+  > {
+  fileReplacements: CurrentFileReplacement[];
+  sourceMap: NormalizedSourceMaps;
+  optimization: NormalizedOptimization;
 }

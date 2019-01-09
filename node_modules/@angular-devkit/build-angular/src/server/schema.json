@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "BuildAngularWebpackServerSchema",
-  "title": "Angular Webpack Architect Builder Schema",
+  "title": "Universal Target",
   "properties": {
     "main": {
       "type": "string",
@@ -28,9 +28,28 @@
       "additionalProperties": false
     },
     "optimization": {
-      "type": "boolean",
       "description": "Enables optimization of the build output.",
-      "default": false
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "boolean",
+              "description": "Enables optimization of the scripts output.",
+              "default": true
+            },
+            "styles": {
+              "type": "boolean",
+              "description": "Enables optimization of the styles output.",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "fileReplacements": {
       "description": "Replace files with other files in the build.",
@@ -44,20 +63,57 @@
       "type": "string",
       "description": "Path where output will be placed."
     },
+    "resourcesOutputPath": {
+      "type": "string",
+      "description": "The path where style resources will be placed, relative to outputPath.",
+      "default": ""
+    },
     "sourceMap": {
-      "type": "boolean",
       "description": "Output sourcemaps.",
-      "default": true
+      "default": true,
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all scripts.",
+              "default": true
+            },
+            "styles": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all styles.",
+              "default": true
+            },
+            "hidden": {
+              "type": "boolean",
+              "description": "Output sourcemaps used for error reporting tools.",
+              "default": false
+            },
+            "vendor": {
+              "type": "boolean",
+              "description": "Resolve vendor packages sourcemaps.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "vendorSourceMap": {
       "type": "boolean",
       "description": "Resolve vendor packages sourcemaps.",
+      "x-deprecated": true,
       "default": false
     },
     "evalSourceMap": {
       "type": "boolean",
       "description": "Output in-file eval sourcemaps.",
-      "default": false
+      "default": false,
+      "x-deprecated": true
     },
     "vendorChunk": {
       "type": "boolean",
@@ -145,7 +201,7 @@
     },
     "statsJson": {
       "type": "boolean",
-      "description": "Generates a 'stats.json' file which can be analyzed using tools such as: #webpack-bundle-analyzer' or https: //webpack.github.io/analyse.",
+      "description": "Generates a 'stats.json' file which can be analyzed using tools such as: 'webpack-bundle-analyzer' or https://webpack.github.io/analyse.",
       "default": false
     },
     "forkTypeChecker": {
@@ -154,7 +210,7 @@
       "default": true
     },
     "lazyModules": {
-      "description": "List of additional NgModule files that will be lazy loaded. Lazy router modules with be discovered automatically.",
+      "description": "List of additional NgModule files that will be lazy loaded. Lazy router modules will be discovered automatically.",
       "type": "array",
       "items": {
         "type": "string"
@@ -214,6 +270,5 @@
         }
       ]
     }
-
   }
 }

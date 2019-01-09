@@ -8,6 +8,7 @@
 /**
  * Immutable set of Http headers, with lazy parsing.
  *
+ * @publicApi
  */
 export declare class HttpHeaders {
     /**

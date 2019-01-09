@@ -19,7 +19,7 @@ import { HttpEvent } from './response';
  * In rare cases, interceptors may wish to completely handle a request themselves,
  * and not delegate to the remainder of the chain. This behavior is allowed.
  *
- *
+ * @publicApi
  */
 export interface HttpInterceptor {
     /**
@@ -55,7 +55,7 @@ export declare class HttpInterceptorHandler implements HttpHandler {
  * A multi-provider token which represents the array of `HttpInterceptor`s that
  * are registered.
  *
- *
+ * @publicApi
  */
 export declare const HTTP_INTERCEPTORS: InjectionToken<HttpInterceptor[]>;
 export declare class NoopInterceptor implements HttpInterceptor {

@@ -25,7 +25,7 @@ export declare class BrowserDomAdapter extends GenericBrowserDomAdapter {
     logGroupEnd(): void;
     readonly attrToPropMap: any;
     contains(nodeA: any, nodeB: any): boolean;
-    querySelector(el: Element, selector: string): any;
+    querySelector(el: HTMLElement, selector: string): any;
     querySelectorAll(el: any, selector: string): any[];
     on(el: Node, evt: any, listener: any): void;
     onAndCancel(el: Node, evt: any, listener: any): Function;
@@ -87,7 +87,7 @@ export declare class BrowserDomAdapter extends GenericBrowserDomAdapter {
     hasAttribute(element: Element, attribute: string): boolean;
     hasAttributeNS(element: Element, ns: string, attribute: string): boolean;
     getAttribute(element: Element, attribute: string): string | null;
-    getAttributeNS(element: Element, ns: string, name: string): string;
+    getAttributeNS(element: Element, ns: string, name: string): string | null;
     setAttribute(element: Element, name: string, value: string): void;
     setAttributeNS(element: Element, ns: string, name: string, value: string): void;
     removeAttribute(element: Element, attribute: string): void;

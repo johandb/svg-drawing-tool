@@ -8,6 +8,8 @@
 import { CompileDirectiveMetadata, CompileStylesheetMetadata } from './compile_metadata';
 import { UrlResolver } from './url_resolver';
 import { OutputContext } from './util';
+export declare const HOST_ATTR: string;
+export declare const CONTENT_ATTR: string;
 export declare class StylesCompileDependency {
     name: string;
     moduleUrl: string;

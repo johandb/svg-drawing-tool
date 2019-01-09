@@ -42,10 +42,8 @@ export declare function createProgram({ rootNames, options, host, oldProgram }: 
  * TODO(tbosch): talk to the TypeScript team to expose their logic for calculating the `rootDir`
  * if none was specified.
  *
- * Note: This function works on normalized paths from typescript.
- *
- * @param outDir
- * @param outSrcMappings
+ * Note: This function works on normalized paths from typescript but should always return
+ * POSIX normalized paths for output paths.
  */
 export declare function createSrcToOutPathMapper(outDir: string | undefined, sampleSrcFileName: string | undefined, sampleOutFileName: string | undefined, host?: {
     dirname: typeof path.dirname;

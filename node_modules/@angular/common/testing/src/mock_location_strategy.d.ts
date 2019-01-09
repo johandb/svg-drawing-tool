@@ -10,7 +10,7 @@ import { LocationStrategy } from '@angular/common';
  * A mock implementation of {@link LocationStrategy} that allows tests to fire simulated
  * location events.
  *
- *
+ * @publicApi
  */
 export declare class MockLocationStrategy extends LocationStrategy {
     internalBaseHref: string;

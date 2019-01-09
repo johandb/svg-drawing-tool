@@ -10,4 +10,5 @@ export declare class TemplateDrivenErrors {
     static formGroupNameException(): void;
     static missingNameException(): void;
     static modelGroupParentException(): void;
+    static ngFormWarning(): void;
 }

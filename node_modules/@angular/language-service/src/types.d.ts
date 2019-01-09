@@ -15,7 +15,7 @@ export { BuiltinType, DeclarationKind, Definition, PipeInfo, Pipes, Signature, S
  *
  * A host interface; see `LanguageSeriviceHost`.
  *
- * @experimental
+ * @publicApi
  */
 export interface TemplateSource {
     /**
@@ -53,7 +53,7 @@ export interface TemplateSource {
  *
  * A host type; see `LanguageSeriviceHost`.
  *
- * @experimental
+ * @publicApi
  */
 export declare type TemplateSources = TemplateSource[] | undefined;
 /**
@@ -61,7 +61,7 @@ export declare type TemplateSources = TemplateSource[] | undefined;
  *
  * A host type; see `LanguageServiceHost`.
  *
- * @experimental
+ * @publicApi
  */
 export interface DeclarationError {
     /**
@@ -85,7 +85,7 @@ export interface DeclarationError {
  *
  * A host type; see `LanguageSeriviceHost`.
  *
- * @experimental
+ * @publicApi
  */
 export interface Declaration {
     /**
@@ -111,7 +111,7 @@ export interface Declaration {
  *
  * A host type; see `LanguageSeriviceHost`.
  *
- * @experimental
+ * @publicApi
  */
 export declare type Declarations = Declaration[];
 /**
@@ -140,7 +140,7 @@ export declare type Declarations = Declaration[];
  * releases. After an interface is marked as stable breaking-changes will only be allowed between
  * major releases. No breaking changes are allowed between patch releases.
  *
- * @experimental
+ * @publicApi
  */
 export interface LanguageServiceHost {
     /**
@@ -177,7 +177,7 @@ export interface LanguageServiceHost {
  *
  * A `LanguageService` interface.
  *
- * @experimental
+ * @publicApi
  */
 export interface Completion {
     /**
@@ -196,7 +196,7 @@ export interface Completion {
 /**
  * A sequence of completions.
  *
- * @experimental
+ * @publicApi
  */
 export declare type Completions = Completion[] | undefined;
 /**
@@ -209,7 +209,7 @@ export interface Location {
 /**
  * The kind of diagnostic message.
  *
- * @experimental
+ * @publicApi
  */
 export declare enum DiagnosticKind {
     Error = 0,
@@ -223,7 +223,7 @@ export declare enum DiagnosticKind {
  * For compatibility previous implementation, the values are expected to override
  * toString() to return a formatted message.
  *
- * @experimental
+ * @publicApi
  */
 export interface DiagnosticMessageChain {
     /**
@@ -238,7 +238,7 @@ export interface DiagnosticMessageChain {
 /**
  * An template diagnostic message to display.
  *
- * @experimental
+ * @publicApi
  */
 export interface Diagnostic {
     /**
@@ -257,7 +257,7 @@ export interface Diagnostic {
 /**
  * A sequence of diagnostic message.
  *
- * @experimental
+ * @publicApi
  */
 export declare type Diagnostics = Diagnostic[];
 /**
@@ -313,7 +313,7 @@ export interface Hover {
  * releases. After an interface is marked as stable breaking-changes will only be allowed between
  * major releases. No breaking changes are allowed between patch releases.
  *
- * @experimental
+ * @publicApi
  */
 export interface LanguageService {
     /**

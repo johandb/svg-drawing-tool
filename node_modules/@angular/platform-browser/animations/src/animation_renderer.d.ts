@@ -33,7 +33,7 @@ export declare class BaseAnimationRenderer implements Renderer2 {
     appendChild(parent: any, newChild: any): void;
     insertBefore(parent: any, newChild: any, refChild: any): void;
     removeChild(parent: any, oldChild: any): void;
-    selectRootElement(selectorOrNode: any): any;
+    selectRootElement(selectorOrNode: any, preserveContent?: boolean): any;
     parentNode(node: any): any;
     nextSibling(node: any): any;
     setAttribute(el: any, name: string, value: string, namespace?: string | null | undefined): void;

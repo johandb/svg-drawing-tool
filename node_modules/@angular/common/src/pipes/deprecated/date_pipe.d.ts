@@ -68,7 +68,7 @@ import { PipeTransform } from '@angular/core';
  *
  * {@example common/pipes/ts/date_pipe.ts region='DeprecatedDatePipe'}
  *
- *
+ * @publicApi
  */
 export declare class DeprecatedDatePipe implements PipeTransform {
     private _locale;

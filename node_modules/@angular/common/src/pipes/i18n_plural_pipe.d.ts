@@ -19,7 +19,7 @@ import { NgLocalization } from '../i18n/localization';
  *
  * {@example common/pipes/ts/i18n_pipe.ts region='I18nPluralPipeComponent'}
  *
- * @experimental
+ * @publicApi
  */
 export declare class I18nPluralPipe implements PipeTransform {
     private _localization;

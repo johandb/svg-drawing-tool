@@ -1,4 +1,4 @@
-import { Rule } from '../engine/interface';
+import { ExecutionOptions, Rule } from '../engine/interface';
 /**
  * Run a schematic from a separate collection.
  *
@@ -6,11 +6,11 @@ import { Rule } from '../engine/interface';
  * @param schematicName The name of the schematic to run.
  * @param options The options to pass as input to the RuleFactory.
  */
-export declare function externalSchematic<OptionT extends object>(collectionName: string, schematicName: string, options: OptionT): Rule;
+export declare function externalSchematic<OptionT extends object>(collectionName: string, schematicName: string, options: OptionT, executionOptions?: Partial<ExecutionOptions>): Rule;
 /**
  * Run a schematic from the same collection.
  *
  * @param schematicName The name of the schematic to run.
  * @param options The options to pass as input to the RuleFactory.
  */
-export declare function schematic<OptionT extends object>(schematicName: string, options: OptionT): Rule;
+export declare function schematic<OptionT extends object>(schematicName: string, options: OptionT, executionOptions?: Partial<ExecutionOptions>): Rule;

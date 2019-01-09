@@ -17,7 +17,6 @@ export declare type FallbackSchematicDescription = {
     description: SchematicDescription<{}, {}>;
 };
 export declare type FallbackContext = TypedSchematicContext<FallbackCollectionDescription, FallbackSchematicDescription>;
-export declare type OptionTransform<T extends object, R extends object> = (schematic: SchematicDescription<FallbackCollectionDescription, FallbackSchematicDescription>, options: T) => Observable<R>;
 /**
  * An EngineHost that support multiple hosts in a fallback configuration. If a host does not
  * have a collection/schematics, use the following host before giving up.
@@ -30,7 +29,7 @@ export declare class FallbackEngineHost implements EngineHost<{}, {}> {
     createSchematicDescription(name: string, collection: CollectionDescription<FallbackCollectionDescription>): SchematicDescription<FallbackCollectionDescription, FallbackSchematicDescription> | null;
     getSchematicRuleFactory<OptionT extends object>(schematic: SchematicDescription<FallbackCollectionDescription, FallbackSchematicDescription>, collection: CollectionDescription<FallbackCollectionDescription>): RuleFactory<OptionT>;
     createSourceFromUrl(url: Url, context: FallbackContext): Source | null;
-    transformOptions<OptionT extends object, ResultT extends object>(schematic: SchematicDescription<FallbackCollectionDescription, FallbackSchematicDescription>, options: OptionT): Observable<ResultT>;
+    transformOptions<OptionT extends object, ResultT extends object>(schematic: SchematicDescription<FallbackCollectionDescription, FallbackSchematicDescription>, options: OptionT, context?: FallbackContext): Observable<ResultT>;
     transformContext(context: FallbackContext): FallbackContext;
     /**
      * @deprecated Use `listSchematicNames`.

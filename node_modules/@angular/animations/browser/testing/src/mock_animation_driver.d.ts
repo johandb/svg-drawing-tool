@@ -8,7 +8,7 @@
 import { AnimationPlayer, NoopAnimationPlayer, ɵStyleData } from '@angular/animations';
 import { ɵAnimationDriver as AnimationDriver } from '@angular/animations/browser';
 /**
- * @experimental Animation support is experimental.
+ * @publicApi
  */
 export declare class MockAnimationDriver implements AnimationDriver {
     static log: AnimationPlayer[];
@@ -22,7 +22,7 @@ export declare class MockAnimationDriver implements AnimationDriver {
     }[], duration: number, delay: number, easing: string, previousPlayers?: any[]): MockAnimationPlayer;
 }
 /**
- * @experimental Animation support is experimental.
+ * @publicApi
  */
 export declare class MockAnimationPlayer extends NoopAnimationPlayer {
     element: any;

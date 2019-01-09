@@ -30,6 +30,7 @@ export interface BuilderContext {
     host: virtualFs.Host<{}>;
     workspace: experimental.workspace.Workspace;
     architect: Architect;
+    targetSpecifier?: TargetSpecifier;
 }
 export interface BuildEvent {
     success: boolean;

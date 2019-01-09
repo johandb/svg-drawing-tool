@@ -17,7 +17,7 @@ export declare class CompilerConfig {
         defaultEncapsulation?: ViewEncapsulation;
         useJit?: boolean;
         jitDevMode?: boolean;
-        missingTranslation?: MissingTranslationStrategy;
+        missingTranslation?: MissingTranslationStrategy | null;
         preserveWhitespaces?: boolean;
         strictInjectionParameters?: boolean;
     });

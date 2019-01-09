@@ -11,6 +11,7 @@
  * Take care not to evaluate this in non-browser contexts.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class BrowserXhr {
     constructor();

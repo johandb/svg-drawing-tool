@@ -27,3 +27,4 @@ export declare function branchAndMerge(rule: Rule, strategy?: MergeStrategy): Ru
 export declare function when(predicate: FilePredicate<boolean>, operator: FileOperator): FileOperator;
 export declare function partitionApplyMerge(predicate: FilePredicate<boolean>, ruleYes: Rule, ruleNo?: Rule): Rule;
 export declare function forEach(operator: FileOperator): Rule;
+export declare function composeFileOperators(operators: FileOperator[]): FileOperator;

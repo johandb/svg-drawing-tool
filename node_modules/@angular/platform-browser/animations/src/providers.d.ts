@@ -16,7 +16,7 @@ export declare function instantiateSupportedAnimationDriver(): WebAnimationsDriv
 export declare function instantiateDefaultStyleNormalizer(): WebAnimationsStyleNormalizer;
 export declare function instantiateRendererFactory(renderer: DomRendererFactory2, engine: AnimationEngine, zone: NgZone): AnimationRendererFactory;
 /**
- * @experimental Animation support is experimental.
+ * @publicApi
  */
 export declare const ANIMATION_MODULE_TYPE: InjectionToken<"NoopAnimations" | "BrowserAnimations">;
 /**

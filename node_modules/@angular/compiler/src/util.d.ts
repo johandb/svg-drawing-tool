@@ -68,3 +68,7 @@ export interface Console {
     log(message: string): void;
     warn(message: string): void;
 }
+declare const _global: {
+    [name: string]: any;
+};
+export { _global as global };

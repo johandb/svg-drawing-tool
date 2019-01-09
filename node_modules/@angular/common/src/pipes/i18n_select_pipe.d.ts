@@ -21,7 +21,7 @@ import { PipeTransform } from '@angular/core';
  *
  * {@example common/pipes/ts/i18n_pipe.ts region='I18nSelectPipeComponent'}
  *
- * @experimental
+ * @publicApi
  */
 export declare class I18nSelectPipe implements PipeTransform {
     /**

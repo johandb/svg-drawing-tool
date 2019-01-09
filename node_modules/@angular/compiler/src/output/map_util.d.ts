@@ -15,4 +15,4 @@ export declare type MapLiteral = MapEntry[];
 export declare function mapEntry(key: string, value: o.Expression): MapEntry;
 export declare function mapLiteral(obj: {
     [key: string]: o.Expression;
-}): o.Expression;
+}, quoted?: boolean): o.Expression;

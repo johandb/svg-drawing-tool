@@ -142,6 +142,7 @@ import { PipeTransform } from '@angular/core';
  * }
  * ```
  *
+ * @publicApi
  */
 export declare class DatePipe implements PipeTransform {
     private locale;

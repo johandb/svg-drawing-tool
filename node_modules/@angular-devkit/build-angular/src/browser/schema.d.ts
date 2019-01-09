@@ -44,17 +44,22 @@ export interface BrowserBuilderSchema {
   /**
    * Enables optimization of the build output.
    */
-  optimization: boolean;
+  optimization: OptimizationOptions;
 
   /**
    * Replace files with other files in the build.
    */
-  fileReplacements: FileReplacements[];
+  fileReplacements: FileReplacement[];
 
   /**
    * Path where output will be placed.
    */
   outputPath: string;
+
+  /**
+   * Path where style resources will be placed (Relative to outputPath).
+   */
+  resourcesOutputPath: string;
 
   /**
    * Build using Ahead of Time compilation.
@@ -64,14 +69,16 @@ export interface BrowserBuilderSchema {
   /**
    * Output sourcemaps.
    */
-  sourceMap: boolean;
+  sourceMap: SourceMapOptions;
 
   /**
    * Resolve vendor packages sourcemaps.
+   * @deprecated - use `sourceMap.vendor` instead
    */
   vendorSourceMap?: boolean;
 
   /**
+    @deprecated
    * Output in-file eval sourcemaps.
    */
   evalSourceMap: boolean;
@@ -192,6 +199,7 @@ export interface BrowserBuilderSchema {
   ngswConfigPath?: string;
 
   /**
+   * @deprecated
    * Flag to prevent building an app shell.
    */
   skipAppShell: boolean;
@@ -203,7 +211,7 @@ export interface BrowserBuilderSchema {
 
   /**
    * Generates a 'stats.json' file which can be analyzed using tools
-   * such as: #webpack-bundle-analyzer' or https: //webpack.github.io/analyse.
+   * such as: #webpack-bundle-analyzer' or https://webpack.github.io/analyse.
    */
   statsJson: boolean;
 
@@ -222,6 +230,33 @@ export interface BrowserBuilderSchema {
    * Budget thresholds to ensure parts of your application stay within boundaries which you set.
    */
   budgets: Budget[];
+
+  /**
+   * Output profile events for Chrome profiler.
+   */
+  profile: boolean;
+}
+
+export type OptimizationOptions = boolean | OptimizationObject;
+
+export interface OptimizationObject {
+  /** Enables optimization of the scripts output. */
+  scripts?: boolean;
+  /** Enables optimization of the styles output. */
+  styles?: boolean;
+}
+
+export type SourceMapOptions = boolean | SourceMapObject;
+
+export interface SourceMapObject {
+  /** Output sourcemaps used for error reports. */
+  hidden?: boolean;
+  /** Resolve vendor packages sourcemaps */
+  vendor?: boolean;
+  /** Output sourcemaps for all scripts */
+  scripts?: boolean;
+  /** Output sourcemaps for all styles. */
+  styles?: boolean;
 }
 
 export type AssetPattern = string | AssetPatternObject;
@@ -236,6 +271,11 @@ export interface AssetPatternObject {
    * The input path dir in which to apply 'glob'. Defaults to the project root.
    */
   input: string;
+
+  /**
+   * 	An array of globs to ignore.
+   */
+  ignore?: string[];
 
   /**
    * Absolute path within the output.
@@ -362,4 +402,20 @@ export enum BudgetType {
   AllScript = 'allScript',
   AnyScript = 'anyScript',
   Bundle = 'bundle',
+}
+
+// TODO: figure out a better way to normalize assets, extra entry points, file replacements,
+// and whatever else needs to be normalized, while keeping type safety.
+// Right now this normalization has to be done in all other builders that make use of the
+// BrowserBuildSchema and BrowserBuilder.buildWebpackConfig.
+// It would really help if it happens during architect.validateBuilderOptions, or similar.
+export interface NormalizedBrowserBuilderSchema extends
+  Pick<
+  BrowserBuilderSchema,
+  Exclude<keyof BrowserBuilderSchema, 'sourceMap' | 'vendorSourceMap' | 'optimization'>
+  > {
+  sourceMap: NormalizedSourceMaps;
+  assets: AssetPatternObject[];
+  fileReplacements: CurrentFileReplacement[];
+  optimization: NormalizedOptimization;
 }

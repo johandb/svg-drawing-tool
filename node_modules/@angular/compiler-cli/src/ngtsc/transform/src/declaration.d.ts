@@ -15,7 +15,7 @@ export declare class DtsFileTransformer {
     private coreImportsFrom;
     private ivyFields;
     private imports;
-    constructor(coreImportsFrom: ts.SourceFile | null);
+    constructor(coreImportsFrom: ts.SourceFile | null, importPrefix?: string);
     /**
      * Track that a static field was added to the code for a class.
      */

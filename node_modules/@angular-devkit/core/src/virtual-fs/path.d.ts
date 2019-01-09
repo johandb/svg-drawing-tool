@@ -78,8 +78,15 @@ export declare function relative(from: Path, to: Path): Path;
 export declare function resolve(p1: Path, p2: Path): Path;
 export declare function fragment(path: string): PathFragment;
 /**
+ * Reset the cache. This is only useful for testing.
+ * @private
+ */
+export declare function resetNormalizeCache(): void;
+/**
  * Normalize a string into a Path. This is the only mean to get a Path type from a string that
- * represents a system path. Normalization includes:
+ * represents a system path. This method cache the results as real world paths tend to be
+ * duplicated often.
+ * Normalization includes:
  *   - Windows backslashes `\\` are replaced with `/`.
  *   - Windows drivers are replaced with `/X/`, where X is the drive letter.
  *   - Absolute paths starts with `/`.
@@ -87,8 +94,13 @@ export declare function fragment(path: string): PathFragment;
  *   - Path segments `.` are removed.
  *   - Path segments `..` are resolved.
  *   - If a path is absolute, having a `..` at the start is invalid (and will throw).
+ * @param path The path to be normalized.
  */
 export declare function normalize(path: string): Path;
+/**
+ * The no cache version of the normalize() function. Used for benchmarking and testing.
+ */
+export declare function noCacheNormalize(path: string): Path;
 export declare const path: TemplateTag<Path>;
 export declare type WindowsPath = string & {
     __PRIVATE_DEVKIT_WINDOWS_PATH: void;

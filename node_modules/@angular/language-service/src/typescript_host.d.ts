@@ -34,7 +34,7 @@ export declare class DummyResourceLoader extends ResourceLoader {
  * The `TypeScriptServiceHost` implements the Angular `LanguageServiceHost` using
  * the TypeScript language services.
  *
- * @experimental
+ * @publicApi
  */
 export declare class TypeScriptServiceHost implements LanguageServiceHost {
     private host;

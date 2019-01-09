@@ -10,9 +10,6 @@ import { Observable } from 'rxjs';
 import { Action, CreateFileAction, DeleteFileAction, OverwriteFileAction, RenameFileAction } from '../tree/action';
 import { Tree } from '../tree/interface';
 export interface Sink {
-    preCommitAction: (action: Action) => void | PromiseLike<Action> | Observable<Action> | Action;
-    preCommit: () => void | Observable<void>;
-    postCommit: () => void | Observable<void>;
     commit(tree: Tree): Observable<void>;
 }
 export declare abstract class SimpleSinkBase implements Sink {

@@ -10,7 +10,7 @@
  *
  * Inject `HttpTestingController` to expect and flush requests in your tests.
  *
- *
+ * @publicApi
  */
 export declare class HttpClientTestingModule {
 }

@@ -26,7 +26,7 @@ export declare class Token {
     isCharacter(code: number): boolean;
     isNumber(): boolean;
     isString(): boolean;
-    isOperator(operater: string): boolean;
+    isOperator(operator: string): boolean;
     isIdentifier(): boolean;
     isKeyword(): boolean;
     isKeywordLet(): boolean;

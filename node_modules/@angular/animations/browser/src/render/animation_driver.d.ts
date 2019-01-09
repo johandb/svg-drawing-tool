@@ -7,7 +7,7 @@
  */
 import { AnimationPlayer } from '@angular/animations';
 /**
- * @experimental
+ * @publicApi
  */
 export declare class NoopAnimationDriver implements AnimationDriver {
     validateStyleProperty(prop: string): boolean;
@@ -20,7 +20,7 @@ export declare class NoopAnimationDriver implements AnimationDriver {
     }[], duration: number, delay: number, easing: string, previousPlayers?: any[], scrubberAccessRequested?: boolean): AnimationPlayer;
 }
 /**
- * @experimental
+ * @publicApi
  */
 export declare abstract class AnimationDriver {
     static NOOP: AnimationDriver;

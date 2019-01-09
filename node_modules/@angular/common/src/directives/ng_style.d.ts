@@ -26,7 +26,7 @@ import { DoCheck, ElementRef, KeyValueDiffers, Renderer2 } from '@angular/core';
  * - keys are style names with an optional `.<unit>` suffix (ie 'top.px', 'font-style.em'),
  * - values are the values assigned to those properties (expressed in the given unit).
  *
- *
+ * @publicApi
  */
 export declare class NgStyle implements DoCheck {
     private _differs;

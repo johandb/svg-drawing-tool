@@ -7,6 +7,7 @@
  * @see `AnimationFactory`
  * @see `animate()`
  *
+ * @publicApi
  */
 export interface AnimationPlayer {
     /**
@@ -94,6 +95,7 @@ export interface AnimationPlayer {
  * @see `AnimationPlayer`
  * @see `GroupPlayer`
  *
+ * @publicApi
  */
 export declare class NoopAnimationPlayer implements AnimationPlayer {
     private _onDoneFns;

@@ -14,6 +14,7 @@ import { Response } from '../static_response';
  * Base class for an in-flight JSONP request.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class JSONPConnection implements Connection {
     private _dom;
@@ -44,6 +45,7 @@ export declare class JSONPConnection implements Connection {
  * A {@link ConnectionBackend} that uses the JSONP strategy of making requests.
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class JSONPBackend extends ConnectionBackend {
     private _browserJSONP;

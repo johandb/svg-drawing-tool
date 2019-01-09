@@ -26,7 +26,7 @@ export declare abstract class JsonpCallbackContext {
  * `HttpBackend` that only processes `HttpRequest` with the JSONP method,
  * by performing JSONP style requests.
  *
- *
+ * @publicApi
  */
 export declare class JsonpClientBackend implements HttpBackend {
     private callbackMap;
@@ -45,7 +45,7 @@ export declare class JsonpClientBackend implements HttpBackend {
  * An `HttpInterceptor` which identifies requests with the method JSONP and
  * shifts them to the `JsonpClientBackend`.
  *
- *
+ * @publicApi
  */
 export declare class JsonpInterceptor {
     private jsonp;

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { Url } from 'url';
 import { MergeStrategy } from '../tree/interface';
 import { Workflow } from '../workflow/interface';
-import { Collection, CollectionDescription, Engine, EngineHost, Schematic, SchematicContext, SchematicDescription, Source, TaskConfiguration, TaskId, TaskInfo, TypedSchematicContext } from './interface';
+import { Collection, CollectionDescription, Engine, EngineHost, ExecutionOptions, Schematic, SchematicContext, SchematicDescription, Source, TaskConfiguration, TaskId, TaskInfo, TypedSchematicContext } from './interface';
 export declare class UnknownUrlSourceProtocol extends BaseException {
     constructor(url: string);
 }
@@ -68,10 +68,10 @@ export declare class SchematicEngine<CollectionT extends object, SchematicT exte
     readonly defaultMergeStrategy: MergeStrategy;
     createCollection(name: string): Collection<CollectionT, SchematicT>;
     private _createCollectionDescription;
-    createContext(schematic: Schematic<CollectionT, SchematicT>, parent?: Partial<TypedSchematicContext<CollectionT, SchematicT>>): TypedSchematicContext<CollectionT, SchematicT>;
+    createContext(schematic: Schematic<CollectionT, SchematicT>, parent?: Partial<TypedSchematicContext<CollectionT, SchematicT>>, executionOptions?: Partial<ExecutionOptions>): TypedSchematicContext<CollectionT, SchematicT>;
     createSchematic(name: string, collection: Collection<CollectionT, SchematicT>, allowPrivate?: boolean): Schematic<CollectionT, SchematicT>;
     listSchematicNames(collection: Collection<CollectionT, SchematicT>): string[];
-    transformOptions<OptionT extends object, ResultT extends object>(schematic: Schematic<CollectionT, SchematicT>, options: OptionT): Observable<ResultT>;
+    transformOptions<OptionT extends object, ResultT extends object>(schematic: Schematic<CollectionT, SchematicT>, options: OptionT, context?: TypedSchematicContext<CollectionT, SchematicT>): Observable<ResultT>;
     createSourceFromUrl(url: Url, context: TypedSchematicContext<CollectionT, SchematicT>): Source;
     executePostTasks(): Observable<void>;
 }

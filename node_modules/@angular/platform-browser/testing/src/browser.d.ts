@@ -9,13 +9,13 @@ import { PlatformRef, StaticProvider } from '@angular/core';
 /**
  * Platform for testing
  *
- *
+ * @publicApi
  */
 export declare const platformBrowserTesting: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;
 /**
  * NgModule for testing.
  *
- *
+ * @publicApi
  */
 export declare class BrowserTestingModule {
 }

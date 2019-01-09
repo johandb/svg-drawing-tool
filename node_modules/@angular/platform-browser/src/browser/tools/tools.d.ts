@@ -17,12 +17,12 @@ import { ComponentRef } from '@angular/core';
  * 1. Try the change detection profiler `ng.profiler.timeChangeDetection()`
  *    then hit Enter.
  *
- * @experimental All debugging apis are currently experimental.
+ * @publicApi
  */
 export declare function enableDebugTools<T>(ref: ComponentRef<T>): ComponentRef<T>;
 /**
  * Disables Angular tools.
  *
- * @experimental All debugging apis are currently experimental.
+ * @publicApi
  */
 export declare function disableDebugTools(): void;

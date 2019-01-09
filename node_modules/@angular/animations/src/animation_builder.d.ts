@@ -51,6 +51,7 @@ import { AnimationPlayer } from './players/animation_player';
  * }
  * ```
  *
+ * @publicApi
  */
 export declare abstract class AnimationBuilder {
     /**
@@ -64,6 +65,7 @@ export declare abstract class AnimationBuilder {
 /**
  * A factory object returned from the `AnimationBuilder`.`build()` method.
  *
+ * @publicApi
  */
 export declare abstract class AnimationFactory {
     /**

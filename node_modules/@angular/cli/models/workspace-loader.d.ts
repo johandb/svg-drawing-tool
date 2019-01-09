@@ -6,15 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { experimental, virtualFs } from '@angular-devkit/core';
-import { Observable } from 'rxjs';
 export declare class WorkspaceLoader {
     private _host;
-    private _workspaceCacheMap;
     private _configFileNames;
     constructor(_host: virtualFs.Host);
-    loadGlobalWorkspace(): Observable<experimental.workspace.Workspace | null>;
-    loadWorkspace(projectPath?: string): Observable<experimental.workspace.Workspace | null>;
+    loadWorkspace(projectPath?: string): Promise<experimental.workspace.Workspace>;
     private _getProjectWorkspaceFilePath;
-    private _getGlobalWorkspaceFilePath;
     private _loadWorkspaceFromPath;
 }

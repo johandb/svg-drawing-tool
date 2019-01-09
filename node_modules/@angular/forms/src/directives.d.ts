@@ -12,6 +12,7 @@ export { DefaultValueAccessor } from './directives/default_value_accessor';
 export { NgControl } from './directives/ng_control';
 export { NgControlStatus, NgControlStatusGroup } from './directives/ng_control_status';
 export { NgForm } from './directives/ng_form';
+export { NG_FORM_SELECTOR_WARNING, NgFormSelectorWarning } from './directives/ng_form_selector_warning';
 export { NgModel } from './directives/ng_model';
 export { NgModelGroup } from './directives/ng_model_group';
 export { NumberValueAccessor } from './directives/number_value_accessor';

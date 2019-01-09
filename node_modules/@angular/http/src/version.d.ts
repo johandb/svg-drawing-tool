@@ -13,5 +13,6 @@
 import { Version } from '@angular/core';
 /**
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare const VERSION: Version;

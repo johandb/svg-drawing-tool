@@ -17,7 +17,7 @@ export declare function createTitle(): Title;
  * (representing the `<title>` tag). Instead, this service can be used to set and get the current
  * title value.
  *
- * @experimental
+ * @publicApi
  */
 export declare class Title {
     private _doc;

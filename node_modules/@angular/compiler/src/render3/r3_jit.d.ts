@@ -5,7 +5,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ConstantPool } from '../constant_pool';
 import * as o from '../output/output_ast';
 /**
  * JIT compiles an expression and returns the result of executing that expression.
@@ -18,4 +17,4 @@ import * as o from '../output/output_ast';
  */
 export declare function jitExpression(def: o.Expression, context: {
     [key: string]: any;
-}, sourceUrl: string, constantPool?: ConstantPool): any;
+}, sourceUrl: string, preStatements: o.Statement[]): any;

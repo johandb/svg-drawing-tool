@@ -48,7 +48,7 @@ export declare class CompileMetadataResolver {
     private getGeneratedClass;
     private getComponentViewClass;
     getHostComponentViewClass(dirType: any): StaticSymbol | cpl.ProxyClass;
-    getHostComponentType(dirType: any): StaticSymbol | Type;
+    getHostComponentType(dirType: any): StaticSymbol | cpl.ProxyClass;
     private getRendererType;
     private getComponentFactory;
     private initComponentFactory;

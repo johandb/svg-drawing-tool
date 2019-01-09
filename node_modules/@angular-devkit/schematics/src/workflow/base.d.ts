@@ -9,6 +9,7 @@ import { schema, virtualFs } from '@angular-devkit/core';
 import { Observable, Subject } from 'rxjs';
 import { EngineHost, SchematicEngine } from '../engine';
 import { DryRunEvent } from '../sink/dryrun';
+import { Sink } from '../sink/sink';
 import { LifeCycleEvent, RequiredWorkflowExecutionContext, Workflow, WorkflowExecutionContext } from './interface';
 export interface BaseWorkflowOptions {
     host: virtualFs.Host;
@@ -43,5 +44,6 @@ export declare abstract class BaseWorkflow implements Workflow {
     readonly registry: schema.SchemaRegistry;
     readonly reporter: Observable<DryRunEvent>;
     readonly lifeCycle: Observable<LifeCycleEvent>;
+    protected _createSinks(): Sink[];
     execute(options: Partial<WorkflowExecutionContext> & RequiredWorkflowExecutionContext): Observable<void>;
 }

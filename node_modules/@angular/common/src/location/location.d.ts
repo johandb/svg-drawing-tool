@@ -7,7 +7,7 @@
  */
 import { SubscriptionLike } from 'rxjs';
 import { LocationStrategy } from './location_strategy';
-/** @experimental */
+/** @publicApi */
 export interface PopStateEvent {
     pop?: boolean;
     state?: any;
@@ -39,6 +39,7 @@ export interface PopStateEvent {
  *
  * {@example common/location/ts/path_location_component.ts region='LocationComponent'}
  *
+ * @publicApi
  */
 export declare class Location {
     constructor(platformStrategy: LocationStrategy);

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * @experimental i18n support is experimental.
+ * @publicApi
  */
 export declare const LOCALE_DATA: {
     [localeId: string]: any;
@@ -15,7 +15,7 @@ export declare const LOCALE_DATA: {
  * Register global data to be used internally by Angular. See the
  * ["I18n guide"](guide/i18n#i18n-pipes) to know how to import additional locale data.
  *
- * @experimental i18n support is experimental.
+ * @publicApi
  */
 export declare function registerLocaleData(data: any, localeId?: string | any, extraData?: any): void;
 /**

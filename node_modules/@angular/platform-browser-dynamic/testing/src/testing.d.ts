@@ -7,11 +7,14 @@
  */
 import { PlatformRef, StaticProvider } from '@angular/core';
 export * from './private_export_testing';
+/**
+ * @publicApi
+ */
 export declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;
 /**
  * NgModule for testing.
  *
- *
+ * @publicApi
  */
 export declare class BrowserDynamicTestingModule {
 }

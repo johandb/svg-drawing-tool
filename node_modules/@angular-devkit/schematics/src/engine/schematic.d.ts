@@ -8,7 +8,7 @@
 import { BaseException } from '@angular-devkit/core';
 import { Observable } from 'rxjs';
 import { Tree } from '../tree/interface';
-import { Collection, Engine, RuleFactory, Schematic, SchematicDescription, TypedSchematicContext } from './interface';
+import { Collection, Engine, ExecutionOptions, RuleFactory, Schematic, SchematicDescription, TypedSchematicContext } from './interface';
 export declare class InvalidSchematicsNameException extends BaseException {
     constructor(name: string);
 }
@@ -20,5 +20,5 @@ export declare class SchematicImpl<CollectionT extends object, SchematicT extend
     constructor(_description: SchematicDescription<CollectionT, SchematicT>, _factory: RuleFactory<{}>, _collection: Collection<CollectionT, SchematicT>, _engine: Engine<CollectionT, SchematicT>);
     readonly description: SchematicDescription<CollectionT, SchematicT>;
     readonly collection: Collection<CollectionT, SchematicT>;
-    call<OptionT extends object>(options: OptionT, host: Observable<Tree>, parentContext?: Partial<TypedSchematicContext<CollectionT, SchematicT>>): Observable<Tree>;
+    call<OptionT extends object>(options: OptionT, host: Observable<Tree>, parentContext?: Partial<TypedSchematicContext<CollectionT, SchematicT>>, executionOptions?: Partial<ExecutionOptions>): Observable<Tree>;
 }

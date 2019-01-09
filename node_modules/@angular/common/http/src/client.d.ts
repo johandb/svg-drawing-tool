@@ -19,7 +19,7 @@ export declare type HttpObserve = 'body' | 'events' | 'response';
  * Each request method has multiple signatures, and the return type varies according to which
  * signature is called (mainly the values of `observe` and `responseType`).
  *
- *
+ * @publicApi
  */
 export declare class HttpClient {
     private handler;

@@ -16,7 +16,7 @@ export declare const XSRF_HEADER_NAME: InjectionToken<string>;
 /**
  * Retrieves the current XSRF token to use with the next outgoing request.
  *
- *
+ * @publicApi
  */
 export declare abstract class HttpXsrfTokenExtractor {
     /**

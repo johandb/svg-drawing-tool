@@ -38,7 +38,7 @@ export declare class CompilerImpl implements Compiler {
  */
 export declare const COMPILER_PROVIDERS: StaticProvider[];
 /**
- * @experimental
+ * @publicApi
  */
 export declare class JitCompilerFactory implements CompilerFactory {
     private _defaultOptions;

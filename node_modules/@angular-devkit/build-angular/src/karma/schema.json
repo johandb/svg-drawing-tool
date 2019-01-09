@@ -63,17 +63,45 @@
       "description": "Defines the build environment."
     },
     "sourceMap": {
-      "type": "boolean",
-      "description": "Output sourcemaps."
+      "description": "Output sourcemaps.",
+      "default": true,
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all scripts.",
+              "default": true
+            },
+            "styles": {
+              "type": "boolean",
+              "description": "Output sourcemaps for all styles.",
+              "default": true
+            },
+            "vendor": {
+              "type": "boolean",
+              "description": "Resolve vendor packages sourcemaps.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "vendorSourceMap": {
       "type": "boolean",
       "description": "Resolve vendor packages sourcemaps.",
+      "x-deprecated": true,
       "default": false
     },
     "evalSourceMap": {
       "type": "boolean",
-      "description": "Output in-file eval sourcemaps."
+      "description": "Output in-file eval sourcemaps.",
+      "x-deprecated": true
     },
     "progress": {
       "type": "boolean",
@@ -149,6 +177,13 @@
         ]
       },
       "default": []
+    },
+    "reporters": {
+      "type": "array",
+      "description": "Karma reporters to use. Directly passed to the karma runner.",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "additionalProperties": false,
@@ -169,11 +204,18 @@
             },
             "input": {
               "type": "string",
-              "description": "The input path dir in which to apply 'glob'. Defaults to the project root."
+              "description": "The input directory path in which to apply 'glob'. Defaults to the project root."
             },
             "output": {
               "type": "string",
               "description": "Absolute path within the output."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
           "additionalProperties": false,

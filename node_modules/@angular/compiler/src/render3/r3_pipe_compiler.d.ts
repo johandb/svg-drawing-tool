@@ -14,16 +14,18 @@ export interface R3PipeMetadata {
     name: string;
     type: o.Expression;
     pipeName: string;
-    deps: R3DependencyMetadata[];
+    deps: R3DependencyMetadata[] | null;
     pure: boolean;
 }
 export interface R3PipeDef {
     expression: o.Expression;
     type: o.Type;
+    statements: o.Statement[];
 }
 export declare function compilePipeFromMetadata(metadata: R3PipeMetadata): {
     expression: o.InvokeFunctionExpr;
     type: o.ExpressionType;
+    statements: o.Statement[];
 };
 /**
  * Write a pipe definition to the output context.

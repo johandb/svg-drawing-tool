@@ -5,6 +5,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { JsonArray, JsonObject, JsonValue } from '../interface';
+import { JsonObject, JsonValue } from '../interface';
 import { JsonPointer } from './interface';
-export declare function addUndefinedDefaults(value: JsonValue | undefined, _pointer: JsonPointer, schema?: JsonObject, _root?: JsonObject | JsonArray): JsonValue;
+export declare function addUndefinedDefaults(value: JsonValue, _pointer: JsonPointer, schema?: JsonObject): JsonValue;

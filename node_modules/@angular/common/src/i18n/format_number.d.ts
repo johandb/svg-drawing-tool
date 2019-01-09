@@ -22,7 +22,7 @@ export declare const NUMBER_FORMAT_REGEXP: RegExp;
  *    as `USD` for the US dollar and `EUR` for the euro.
  * - `digitInfo` See {@link DecimalPipe} for more details.
  *
- *
+ * @publicApi
  */
 export declare function formatCurrency(value: number, locale: string, currency: string, currencyCode?: string, digitsInfo?: string): string;
 /**
@@ -36,7 +36,7 @@ export declare function formatCurrency(value: number, locale: string, currency: 
  * - `locale` is a `string` defining the locale to use.
  * - `digitInfo` See {@link DecimalPipe} for more details.
  *
- *
+ * @publicApi
  */
 export declare function formatPercent(value: number, locale: string, digitsInfo?: string): string;
 /**
@@ -51,7 +51,7 @@ export declare function formatPercent(value: number, locale: string, digitsInfo?
  * - `locale` is a `string` defining the locale to use.
  * - `digitInfo` See {@link DecimalPipe} for more details.
  *
- *
+ * @publicApi
  */
 export declare function formatNumber(value: number, locale: string, digitsInfo?: string): string;
 export declare function parseIntAutoRadix(text: string): number;

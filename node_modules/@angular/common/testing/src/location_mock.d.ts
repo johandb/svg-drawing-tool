@@ -10,7 +10,7 @@ import { SubscriptionLike } from 'rxjs';
 /**
  * A spy for {@link Location} that allows tests to fire simulated location events.
  *
- * @experimental
+ * @publicApi
  */
 export declare class SpyLocation implements Location {
     urlChanges: string[];

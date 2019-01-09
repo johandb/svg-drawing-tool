@@ -9,6 +9,6 @@ import { PlatformRef, StaticProvider } from '@angular/core';
 /**
  * A platform that included corePlatform and the compiler.
  *
- * @experimental
+ * @publicApi
  */
 export declare const platformCoreDynamic: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;

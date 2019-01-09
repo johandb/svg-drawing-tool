@@ -53,7 +53,7 @@ export declare class SwitchView {
  * When no matching expression is found on a `ngSwitchCase` view, the `ngSwitchDefault` view is
  * stamped out.
  *
- *
+ * @publicApi
  */
 export declare class NgSwitch {
     private _defaultViews;
@@ -87,7 +87,7 @@ export declare class NgSwitch {
  *
  * See {@link NgSwitch} for more details and example.
  *
- *
+ * @publicApi
  */
 export declare class NgSwitchCase implements DoCheck {
     private ngSwitch;
@@ -116,7 +116,7 @@ export declare class NgSwitchCase implements DoCheck {
  *
  * See {@link NgSwitch} for more details and example.
  *
- *
+ * @publicApi
  */
 export declare class NgSwitchDefault {
     constructor(viewContainer: ViewContainerRef, templateRef: TemplateRef<Object>, ngSwitch: NgSwitch);

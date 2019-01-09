@@ -14,7 +14,8 @@ export interface Node {
 export declare class Text implements Node {
     value: string;
     sourceSpan: ParseSourceSpan;
-    constructor(value: string, sourceSpan: ParseSourceSpan);
+    i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined;
+    constructor(value: string, sourceSpan: ParseSourceSpan, i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined);
     visit(visitor: Visitor, context: any): any;
 }
 export declare class Expansion implements Node {
@@ -23,7 +24,8 @@ export declare class Expansion implements Node {
     cases: ExpansionCase[];
     sourceSpan: ParseSourceSpan;
     switchValueSourceSpan: ParseSourceSpan;
-    constructor(switchValue: string, type: string, cases: ExpansionCase[], sourceSpan: ParseSourceSpan, switchValueSourceSpan: ParseSourceSpan);
+    i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined;
+    constructor(switchValue: string, type: string, cases: ExpansionCase[], sourceSpan: ParseSourceSpan, switchValueSourceSpan: ParseSourceSpan, i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined);
     visit(visitor: Visitor, context: any): any;
 }
 export declare class ExpansionCase implements Node {
@@ -40,7 +42,8 @@ export declare class Attribute implements Node {
     value: string;
     sourceSpan: ParseSourceSpan;
     valueSpan?: ParseSourceSpan | undefined;
-    constructor(name: string, value: string, sourceSpan: ParseSourceSpan, valueSpan?: ParseSourceSpan | undefined);
+    i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined;
+    constructor(name: string, value: string, sourceSpan: ParseSourceSpan, valueSpan?: ParseSourceSpan | undefined, i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined);
     visit(visitor: Visitor, context: any): any;
 }
 export declare class Element implements Node {
@@ -50,7 +53,8 @@ export declare class Element implements Node {
     sourceSpan: ParseSourceSpan;
     startSourceSpan: ParseSourceSpan | null;
     endSourceSpan: ParseSourceSpan | null;
-    constructor(name: string, attrs: Attribute[], children: Node[], sourceSpan: ParseSourceSpan, startSourceSpan?: ParseSourceSpan | null, endSourceSpan?: ParseSourceSpan | null);
+    i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined;
+    constructor(name: string, attrs: Attribute[], children: Node[], sourceSpan: ParseSourceSpan, startSourceSpan?: ParseSourceSpan | null, endSourceSpan?: ParseSourceSpan | null, i18n?: import("@angular/compiler/src/i18n/i18n_ast").Message | import("@angular/compiler/src/i18n/i18n_ast").Node | undefined);
     visit(visitor: Visitor, context: any): any;
 }
 export declare class Comment implements Node {

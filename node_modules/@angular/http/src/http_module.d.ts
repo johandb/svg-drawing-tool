@@ -16,6 +16,7 @@ export declare function jsonpFactory(jsonpBackend: JSONPBackend, requestOptions:
  * The module that includes http's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class HttpModule {
 }
@@ -23,6 +24,7 @@ export declare class HttpModule {
  * The module that includes jsonp's providers
  *
  * @deprecated see https://angular.io/guide/http
+ * @publicApi
  */
 export declare class JsonpModule {
 }

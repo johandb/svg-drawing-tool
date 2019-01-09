@@ -39,6 +39,7 @@ import { PipeTransform } from '@angular/core';
  *
  * {@example common/pipes/ts/slice_pipe.ts region='SlicePipe_string'}
  *
+ * @publicApi
  */
 export declare class SlicePipe implements PipeTransform {
     /**

@@ -41,8 +41,8 @@ export declare class CssSelector {
  * Reads a list of CssSelectors and allows to calculate which ones
  * are contained in a given CssSelector.
  */
-export declare class SelectorMatcher {
-    static createNotMatcher(notSelectors: CssSelector[]): SelectorMatcher;
+export declare class SelectorMatcher<T = any> {
+    static createNotMatcher(notSelectors: CssSelector[]): SelectorMatcher<null>;
     private _elementMap;
     private _elementPartialMap;
     private _classMap;
@@ -50,7 +50,7 @@ export declare class SelectorMatcher {
     private _attrValueMap;
     private _attrValuePartialMap;
     private _listContexts;
-    addSelectables(cssSelectors: CssSelector[], callbackCtxt?: any): void;
+    addSelectables(cssSelectors: CssSelector[], callbackCtxt?: T): void;
     /**
      * Add an object that can be found later on by calling `match`.
      * @param cssSelector A css selector
@@ -66,18 +66,18 @@ export declare class SelectorMatcher {
      * @param matchedCallback This callback will be called with the object handed into `addSelectable`
      * @return boolean true if a match was found
     */
-    match(cssSelector: CssSelector, matchedCallback: ((c: CssSelector, a: any) => void) | null): boolean;
+    match(cssSelector: CssSelector, matchedCallback: ((c: CssSelector, a: T) => void) | null): boolean;
 }
 export declare class SelectorListContext {
     selectors: CssSelector[];
     alreadyMatched: boolean;
     constructor(selectors: CssSelector[]);
 }
-export declare class SelectorContext {
+export declare class SelectorContext<T = any> {
     selector: CssSelector;
-    cbContext: any;
+    cbContext: T;
     listContext: SelectorListContext;
     notSelectors: CssSelector[];
-    constructor(selector: CssSelector, cbContext: any, listContext: SelectorListContext);
-    finalize(cssSelector: CssSelector, callback: ((c: CssSelector, a: any) => void) | null): boolean;
+    constructor(selector: CssSelector, cbContext: T, listContext: SelectorListContext);
+    finalize(cssSelector: CssSelector, callback: ((c: CssSelector, a: T) => void) | null): boolean;
 }
