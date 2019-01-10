@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Line, MousePosition } from '../../model/shape';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-line',
@@ -10,6 +11,15 @@ import { ShapeType } from '../../model/shape-types';
     styleUrls: ['./line.component.css']
 })
 export class LineComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+    ];
 
     constructor() {
         super();

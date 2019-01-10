@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { MousePosition, Ellipse } from '../../model/shape';
 import { ShapeType } from '../../model/shape-types';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-ellipse',
@@ -9,6 +10,15 @@ import { ShapeType } from '../../model/shape-types';
     styleUrls: ['./ellipse.component.css']
 })
 export class EllipseComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+    ];
 
     constructor() {
         super();

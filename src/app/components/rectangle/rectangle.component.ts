@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
 import { MousePosition, Rectangle } from '../../model/shape';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-rectangle',
@@ -9,6 +10,15 @@ import { MousePosition, Rectangle } from '../../model/shape';
     styleUrls: ['./rectangle.component.css']
 })
 export class RectangleComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+    ];
 
     constructor() {
         super();

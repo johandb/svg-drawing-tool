@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { MousePosition, Square } from '../../model/shape';
 import { ShapeType } from '../../model/shape-types';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-square',
@@ -9,6 +10,15 @@ import { ShapeType } from '../../model/shape-types';
     styleUrls: ['./square.component.css']
 })
 export class SquareComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+    ];
 
     constructor() {
         super();

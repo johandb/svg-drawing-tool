@@ -2,6 +2,7 @@ import { ShapeComponent } from './../shape/shape.component';
 import { Component, OnInit } from '@angular/core';
 import { ShapeType, State } from '../../model/shape-types';
 import { Path, MousePosition } from '../../model/shape';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-path',
@@ -9,6 +10,15 @@ import { Path, MousePosition } from '../../model/shape';
     styleUrls: ['./path.component.css']
 })
 export class PathComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+    ];
 
     lastPoint: MousePosition;
     controlPoint: MousePosition;

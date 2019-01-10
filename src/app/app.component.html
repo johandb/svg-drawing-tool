@@ -13,37 +13,36 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#shapes" aria-expanded="false"
-                                aria-controls="basicshapes">
-                                Shapes
-                            </a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#shapes" aria-expanded="false" aria-controls="basicshapes">
+                Shapes
+              </a>
                         </div>
                     </div>
                     <div id="shapes" data-parent="#accordion" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="row nopadding">
                                 <button (click)="selectShape('Line')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/line.png" width="24" height="24"></button>
+                    src="assets/line.png" width="24" height="24"></button>
                                 <button (click)="selectShape('Rectangle')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/rectangle.png" width="24" height="24"></button>
+                    src="assets/rectangle.png" width="24" height="24"></button>
                                 <button (click)="selectShape('Circle')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/circle.png" width="24" height="24"></button>
+                    src="assets/circle.png" width="24" height="24"></button>
                             </div>
                             <div class="row nopadding">
                                 <button (click)="selectShape('Ellipse')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/ellipse.png" width="24" height="24"></button>
+                    src="assets/ellipse.png" width="24" height="24"></button>
                                 <button (click)="selectShape('Path')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/path.png" width="24" height="24"></button>
+                    src="assets/path.png" width="24" height="24"></button>
                                 <button (click)="selectShape('Square')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/square.png" width="24" height="24"></button>
+                    src="assets/square.png" width="24" height="24"></button>
                             </div>
                             <div class="row nopadding">
                                 <button (click)="selectShape('TextBox')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/text.png" width="24" height="24"></button>
+                    src="assets/text.png" width="24" height="24"></button>
                                 <button (click)="selectShape('Image')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/image.png" width="24" height="24"></button>
+                    src="assets/image.png" width="24" height="24"></button>
                                 <button (click)="selectShape('PolyLine')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/polyline.png" width="24" height="24"></button>
+                    src="assets/polyline.png" width="24" height="24"></button>
                             </div>
                         </div>
                     </div>
@@ -51,29 +50,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#options" aria-expanded="false"
-                                aria-controls="options">
-                                Tools
-                            </a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#options" aria-expanded="false" aria-controls="options">
+                Tools
+              </a>
                         </div>
                     </div>
                     <div id="options" data-parent="#accordion" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="row nopadding">
                                 <button (click)="selectTool('SelectArea')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/select-area.png" width="24" height="24"></button>
+                    src="assets/select-area.png" width="24" height="24"></button>
                                 <button (click)="selectTool('Move')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/move.png" width="24" height="24"></button>
+                    src="assets/move.png" width="24" height="24"></button>
                                 <button (click)="selectTool('Pointer')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/pointer.png" width="24" height="24"></button>
+                    src="assets/pointer.png" width="24" height="24"></button>
                             </div>
                             <div class="row nopadding">
                                 <button (click)="selectTool('Rotate')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/rotate.png" width="24" height="24"></button>
+                    src="assets/rotate.png" width="24" height="24"></button>
                                 <button (click)="selectTool('Fliphorizontal')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/flip-horizontal.png" width="24" height="24"></button>
+                    src="assets/flip-horizontal.png" width="24" height="24"></button>
                                 <button (click)="selectTool('Flipvertical')" type="button" class="btn btn-outline-primary col-md-3 shape"><img
-                                        src="assets/flip-vertical.png" width="24" height="24"></button>
+                    src="assets/flip-vertical.png" width="24" height="24"></button>
                             </div>
                         </div>
                     </div>
@@ -81,17 +79,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#properties"
-                                aria-expanded="false" aria-controls="properties">
-                                Properties
-                            </a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#properties" aria-expanded="false" aria-controls="properties">
+                Properties
+              </a>
                         </div>
                     </div>
                     <div id="properties" data-parent="#accordion" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="row nopadding">
                                 <div class="col-md-12">
-                                    <form #shapeForm="ngForm" class="form-horizontal">
+                                    <form-properties [fields]="formFields"></form-properties>
+                                    <!-- <form #shapeForm="ngForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input class="form-control" type="text" [(ngModel)]="shapeProperties.name"
@@ -129,7 +127,7 @@
                                                 </ng-container>
                                             </select>
                                         </div>
-                                    </form>
+                                    </form> -->
                                 </div>
                             </div>
                         </div>
@@ -152,12 +150,11 @@
                     <button (click)="clearShapes()" type="button" class="btn btn-light">Clear</button>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (mousedown)="onMouseDown($event)"
-                (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
-                <ng-container *ngFor="let shape of getShapes()">
-                    <ng-template dynamic-svg [component]="shape"></ng-template>
-                </ng-container>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
+        <ng-container *ngFor="let shape of getShapes()">
+          <ng-template dynamic-svg [component]="shape"></ng-template>
+        </ng-container>
+      </svg>
         </div>
     </div>
 </div>

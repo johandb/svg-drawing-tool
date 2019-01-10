@@ -1,6 +1,0 @@
-<div [formGroup]="group">
-    <label>{{field.label}}</label>
-    <select class="form-control" formControlName="{{field.name}}">
-        <option [value]="item" *ngFor="let item of field.options"> {{item}}</option>
-    </select>
-</div>

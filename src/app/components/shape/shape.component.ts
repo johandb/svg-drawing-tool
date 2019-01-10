@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Shape, MousePosition } from '../../model/shape';
 import { ShapeType } from '../../model/shape-types';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-shape',
@@ -10,6 +11,8 @@ import { ShapeType } from '../../model/shape-types';
 export class ShapeComponent implements OnInit {
 
     @ViewChild('shapeTemplate') shapeTemplate: TemplateRef<any>;
+
+    formFields: Field[] = [];
 
     shape: Shape;
     shapeType: ShapeType;

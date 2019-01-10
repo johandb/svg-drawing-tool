@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
 import { MousePosition, Circle } from '../../model/shape';
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-circle',
@@ -9,6 +10,29 @@ import { MousePosition, Circle } from '../../model/shape';
     styleUrls: ['./circle.component.css']
 })
 export class CircleComponent extends ShapeComponent implements OnInit {
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+        {
+            name: 'y',
+            label: 'Y:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+        {
+            name: 'r',
+            label: 'Radius:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        }
+    ];
 
     constructor() {
         super();

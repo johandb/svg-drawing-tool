@@ -14,6 +14,9 @@ import { TextComponent } from './components/text/text.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
 import { PathComponent } from './components/path/path.component';
+import { ShapePropertiesComponent } from './components/shapeproperties/shapeproperties.component';
+
+import { Field } from 'dynaform';
 
 @Component({
     selector: 'app-root',
@@ -24,6 +27,7 @@ export class AppComponent implements OnInit {
     title = 'SVG Drawing Tool';
 
     @ViewChild('shapeForm') ngForm: NgForm;
+    @ViewChild(ShapePropertiesComponent) form: ShapePropertiesComponent;
 
     svg: any;
     currentPosition: MousePosition = new MousePosition();
@@ -41,6 +45,8 @@ export class AppComponent implements OnInit {
     isDrawing: boolean = false;
     isResizing: boolean = false;
     isSelectingPoints: boolean = false;
+
+    formFields: Field[] = [];
 
     @ContentChild(TemplateRef) shapeTemplate: TemplateRef<any>;
 
@@ -149,6 +155,8 @@ export class AppComponent implements OnInit {
             if (this.selectedComponent) {
                 console.log('FOUND COMPONENT:', this.selectedComponent);
                 this.selectedComponent.isSelected = true;
+                this.formFields = this.selectedComponent.formFields;
+                console.log('form fields : ', this.formFields);
                 this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
                 console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
                 this.startDragging(event);
@@ -172,6 +180,9 @@ export class AppComponent implements OnInit {
             this.shapeProperties = new ShapeProperties();
             this.shapeProperties.name = this.selectedComponent.shape.shapeProperties.name;
             this.selectedComponent.shape.shapeProperties = Object.assign({}, this.shapeProperties);
+
+            this.formFields = this.selectedComponent.formFields;
+            console.log('form fields : ', this.formFields);
 
             console.log('this.shapeproperties ', this.shapeProperties);
             console.log('this.shapeComponent.shapeproperties ', this.selectedComponent.shape.shapeProperties);
