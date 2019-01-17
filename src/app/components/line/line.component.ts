@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Line, MousePosition } from '../../model/shape';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
+
 import { Field } from 'dynaform';
 
 @Component({

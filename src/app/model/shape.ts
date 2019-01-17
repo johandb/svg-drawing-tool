@@ -47,7 +47,7 @@ export interface BaseShape {
  * The Shape object
  */
 export class Shape implements BaseShape {
-    shapeProperties: ShapeProperties;
+    public shapeProperties: ShapeProperties;
     public originX: number;
     public originY: number;
 

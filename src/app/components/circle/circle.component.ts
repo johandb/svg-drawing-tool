@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
-import { MousePosition, Circle } from '../../model/shape';
+import { MousePosition, Circle, Shape } from '../../model/shape';
+
 import { Field } from 'dynaform';
 
 @Component({
@@ -10,39 +11,91 @@ import { Field } from 'dynaform';
     styleUrls: ['./circle.component.css']
 })
 export class CircleComponent extends ShapeComponent implements OnInit {
-    formFields: Field[] = [
-        {
-            name: 'x',
-            label: 'X:',
-            type: 'input',
-            inputType: 'text',
-            value: ''
-        },
-        {
-            name: 'y',
-            label: 'Y:',
-            type: 'input',
-            inputType: 'text',
-            value: ''
-        },
-        {
-            name: 'r',
-            label: 'Radius:',
-            type: 'input',
-            inputType: 'text',
-            value: ''
-        }
-    ];
 
     constructor() {
         super();
         this.shape = new Circle();
+
         this.shapeType = ShapeType.Circle;
         console.log('CircleComponent constructor:', this);
     }
 
     ngOnInit() {
         console.log('CircleComponent ngOnInit');
+    }
+
+    getFormFields(): Field[] {
+        var formFields: Field[] = [];
+        if (this.shape instanceof Circle) {
+            formFields = [
+                {
+                    name: 'name',
+                    label: 'Name:',
+                    type: 'input',
+                    inputType: 'text',
+                    value: this.shape.shapeProperties.name
+                },
+                {
+                    name: 'x',
+                    label: 'X:',
+                    type: 'input',
+                    inputType: 'text',
+                    value: this.shape.originX
+                },
+                {
+                    name: 'y',
+                    label: 'Y:',
+                    type: 'input',
+                    inputType: 'text',
+                    value: this.shape.originY
+                },
+                {
+                    name: 'r',
+                    label: 'Radius:',
+                    type: 'input',
+                    inputType: 'text',
+                    value: this.shape.r
+                },
+                {
+                    name: 'strokeColor',
+                    label: 'Stroke color:',
+                    type: 'colorpicker',
+                    inputType: 'text',
+                    value: this.shape.shapeProperties.strokeColor
+                },
+                {
+                    name: 'fillColor',
+                    label: 'Fill color:',
+                    type: 'colorpicker',
+                    inputType: 'text',
+                    value: this.shape.shapeProperties.fillColor
+                },
+                {
+                    name: 'strokeWidth',
+                    label: 'Stroke width:',
+                    type: 'input',
+                    inputType: 'text',
+                    value: this.shape.shapeProperties.strokeWidth
+                },
+                {
+                    type: "button",
+                    label: "Submit"
+                }];
+        }
+        return formFields;
+    }
+
+    updateShapeProperties(value: any) {
+        console.log('CircleComponent : updateShapeProperties');
+        if (this.shape instanceof Circle) {
+            this.shape.shapeProperties.name = value.name;
+            this.shape.originX = value.x;
+            this.shape.originY = value.y;
+            this.shape.r = value.r;
+            this.shape.shapeProperties.fillColor = value.fillColor;
+            this.shape.shapeProperties.strokeColor = value.strokeColor;
+            this.shape.shapeProperties.strokeWidth = value.strokeWidth;
+        }
     }
 
     setStyles() {

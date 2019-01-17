@@ -1,7 +1,7 @@
 svg {
     background: whitesmoke;
-    width: 934px;
-    height: 600px;
+    width: 100%;
+    height: 900px;
     border: 1px solid black;
 }
 
@@ -18,7 +18,7 @@ svg {
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
- }
+}
 
 h1 {
     color: #80b944;
@@ -47,6 +47,7 @@ h1 {
     height: auto;
 }
 
+
 /* .panel-body ul {
     list-style: none;
     padding-left: 0;
@@ -72,14 +73,14 @@ h1 {
 
 .panel-heading .accordion-toggle:after {
     font-family: FontAwesome;
-    content:"\f068"; 
-    float: right;   
+    content: "\f068";
+    float: right;
     margin: 0;
 }
 
 .panel-heading .accordion-toggle.collapsed:after {
     float: right !important;
-    content:"\f067";
+    content: "\f067";
 }
 
 .panel-title {
@@ -100,14 +101,13 @@ h1 {
     background-color: #609944;
 }
 
-.panel-title a { 
+.panel-title a {
     text-decoration: none;
     color: white;
 }
 
-.panel-title > a:hover, 
-.panel-title > a:active, 
-.panel-title > a:focus  {
-    text-decoration:none;
+.panel-title>a:hover,
+.panel-title>a:active,
+.panel-title>a:focus {
+    text-decoration: none;
 }
-

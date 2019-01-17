@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { DynaformModule } from 'dynaform';
-
 import { ShapeService } from './service/shape.service';
 
 import { AppComponent } from './app.component';
@@ -22,7 +21,6 @@ import { GroupComponent } from './components/group/group.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
 import { PathComponent } from './components/path/path.component';
-import { ShapePropertiesComponent } from './components/shapeproperties/shapeproperties.component';
 
 @NgModule({
     declarations: [
@@ -38,8 +36,7 @@ import { ShapePropertiesComponent } from './components/shapeproperties/shapeprop
         GroupComponent,
         ImageComponent,
         PolyLineComponent,
-        PathComponent,
-        ShapePropertiesComponent,
+        PathComponent
     ],
     entryComponents: [
         ShapeComponent,
@@ -57,8 +54,8 @@ import { ShapePropertiesComponent } from './components/shapeproperties/shapeprop
         BrowserModule,
         ColorPickerModule,
         FormsModule,
+        DynaformModule,
         ReactiveFormsModule,
-        DynaformModule
     ],
     providers: [
         ShapeService

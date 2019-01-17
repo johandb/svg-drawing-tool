@@ -1,7 +1,0 @@
-<div>
-    <form [formGroup]="dynamicForm" novalidate (ngSubmit)="onSubmit(dynamicForm)">
-        <ng-container *ngFor="let field of fields" dynamic-field [field]="field" [group]="dynamicForm"></ng-container>
-        <br>
-        <button *ngIf="fields.length > 0" class="btn btn-primary" type="submit">Submit</button>
-    </form>
-</div>

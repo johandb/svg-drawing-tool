@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Shape, MousePosition } from '../../model/shape';
 import { ShapeType } from '../../model/shape-types';
+
 import { Field } from 'dynaform';
 
 @Component({
@@ -14,7 +15,7 @@ export class ShapeComponent implements OnInit {
 
     formFields: Field[] = [];
 
-    shape: Shape;
+    public shape: Shape;
     shapeType: ShapeType;
     offset: MousePosition;
     isSelected: boolean = false;
@@ -26,6 +27,14 @@ export class ShapeComponent implements OnInit {
 
     ngOnInit() {
         console.log('ShapeComponent ngOnInit');
+    }
+
+    getFormFields(): Field[] {
+        return this.formFields;
+    }
+
+    updateShapeProperties(value: any) {
+        console.log('ShapeComponent : updateShapeProperties');
     }
 
     startDrawing(beginPosition: MousePosition): void {

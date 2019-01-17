@@ -14,7 +14,7 @@ import { TextComponent } from './components/text/text.component';
 import { ImageComponent } from './components/image/image.component';
 import { PolyLineComponent } from './components/polyline/polyline.component';
 import { PathComponent } from './components/path/path.component';
-import { ShapePropertiesComponent } from './components/shapeproperties/shapeproperties.component';
+import { DynamicFormComponent } from 'dynaform';
 
 import { Field } from 'dynaform';
 
@@ -26,8 +26,7 @@ import { Field } from 'dynaform';
 export class AppComponent implements OnInit {
     title = 'SVG Drawing Tool';
 
-    @ViewChild('shapeForm') ngForm: NgForm;
-    @ViewChild(ShapePropertiesComponent) form: ShapePropertiesComponent;
+    @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
     svg: any;
     currentPosition: MousePosition = new MousePosition();
@@ -58,11 +57,6 @@ export class AppComponent implements OnInit {
         this.svg = document.querySelector('svg');
         console.log('svg:', this.svg);
         this.selectedShape = ShapeType.NoShape;
-        this.ngForm.form.valueChanges.subscribe(x => {
-            if (this.selectedComponent) {
-                this.selectedComponent.shape.shapeProperties = Object.assign({}, x);
-            }
-        })
         console.log('AppComponent shapeProperties:', this.shapeProperties);
     }
 
@@ -80,6 +74,7 @@ export class AppComponent implements OnInit {
         this.shapeService.removeAllShapeComponents();
         this.selectedShape = ShapeType.NoShape;
         this.shapeValue = ShapeType[this.selectedShape];
+        this.formFields = [];
     }
 
     getShapes(): ShapeComponent[] {
@@ -155,10 +150,10 @@ export class AppComponent implements OnInit {
             if (this.selectedComponent) {
                 console.log('FOUND COMPONENT:', this.selectedComponent);
                 this.selectedComponent.isSelected = true;
-                this.formFields = this.selectedComponent.formFields;
-                console.log('form fields : ', this.formFields);
                 this.shapeProperties = Object.assign({}, this.selectedComponent.shape.shapeProperties);
                 console.log(event.target.id, ' DRAGGING :', this.selectedComponent);
+                this.formFields = this.selectedComponent.getFormFields();
+                console.log('form fields : ', this.formFields);
                 this.startDragging(event);
             }
         } else if (event.target.classList.contains('resize')) {
@@ -180,9 +175,6 @@ export class AppComponent implements OnInit {
             this.shapeProperties = new ShapeProperties();
             this.shapeProperties.name = this.selectedComponent.shape.shapeProperties.name;
             this.selectedComponent.shape.shapeProperties = Object.assign({}, this.shapeProperties);
-
-            this.formFields = this.selectedComponent.formFields;
-            console.log('form fields : ', this.formFields);
 
             console.log('this.shapeproperties ', this.shapeProperties);
             console.log('this.shapeComponent.shapeproperties ', this.selectedComponent.shape.shapeProperties);
@@ -242,6 +234,11 @@ export class AppComponent implements OnInit {
         if (r > 255 || g > 255 || b > 255)
             throw "Invalid color component";
         return ((r << 16) | (g << 8) | b).toString(16);
+    }
+
+    submit(value: any) {
+        console.log('form values : ', value);
+        this.selectedComponent.updateShapeProperties(value);
     }
 
 }

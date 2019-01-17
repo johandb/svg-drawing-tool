@@ -7,6 +7,7 @@
             <h1>{{ title }}</h1>
         </div>
     </div>
+    {{ form.value | json }}
     <div class="row">
         <div class="col-md-2 tools nopadding">
             <div class="panel-group" id="accordion" aria-multiselectable="true">
@@ -88,7 +89,7 @@
                         <div class="panel-body">
                             <div class="row nopadding">
                                 <div class="col-md-12">
-                                    <form-properties [fields]="formFields"></form-properties>
+                                    <dynamic-form [fields]="formFields" (submit)="submit($event)"></dynamic-form>
                                     <!-- <form #shapeForm="ngForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label>Name</label>

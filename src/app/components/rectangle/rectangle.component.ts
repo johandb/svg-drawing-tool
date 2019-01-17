@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 import { ShapeType } from '../../model/shape-types';
 import { MousePosition, Rectangle } from '../../model/shape';
+
 import { Field } from 'dynaform';
 
 @Component({
