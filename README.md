@@ -1,5 +1,5 @@
 # svg-drawing-tool
-Draw SVG shapes with Angular 6
+Draw SVG shapes with Angular 7
 
 The SVG Drawing Tool is a web based tool to draw different kind of shapes like line, circle, rectangle, square, text and images.
 
