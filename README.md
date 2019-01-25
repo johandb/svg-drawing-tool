@@ -3,6 +3,12 @@ Draw SVG shapes with Angular 7
 
 The SVG Drawing Tool is a web based tool to draw different kind of shapes like line, circle, rectangle, square, text and images.
 
+Installation
+============
+Clone the project or download the zip file in a folder on your system. Change to the installation folder and do
+
+npm install
+
 How it Works
 ============
 Select a shape from the shape menu (line, circle) and click somewhere in the graphical space of the svg. Hold down the mouse and drag the shape to match its size. If you want to move a shape click on the shape and move to the new location.
