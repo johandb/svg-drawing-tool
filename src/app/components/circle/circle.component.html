@@ -1,5 +1,5 @@
 <ng-template #shapeTemplate>
-    <svg:g *ngIf="isSelected">
+    <!-- <svg:g *ngIf="isSelected">
         <svg:rect attr.id="{{ shape.shapeProperties.name }}" class="resize" attr.x="{{ shape.originX - shape.r - 3 }}"
             attr.y="{{ shape.originY - shape.r - 3 }}" width="6" height="6" style="stroke: green; stroke-width: 1; fill:green" />
         <svg:rect attr.id="{{ shape.shapeProperties.name }}" class="resize" attr.x="{{ shape.originX + shape.r - 3 }}"
@@ -10,9 +10,8 @@
             attr.y="{{ shape.originY + shape.r - 3 }}" width="6" height="6" style="stroke: green; stroke-width: 1; fill:green" />
         <svg:rect *ngIf="isSelected" attr.x="{{ shape.originX - shape.r }}" attr.y="{{ shape.originY - shape.r }}"
             attr.width="{{ shape.r * 2 }}" attr.height="{{ shape.r * 2 }}" style="stroke: green; stroke-width: 1; fill:none" />
-    </svg:g>
-    <svg:circle attr.id="{{ shape.shapeProperties.name }}" class="draggable" attr.cx="{{ shape.originX }}" attr.cy="{{ shape.originY }}"
-        attr.r="{{ shape.r }}" [ngStyle]="setStyles()">
+    </svg:g> -->
+    <svg:circle attr.id="{{ shape.shapeProperties.name }}" class="draggable" attr.cx="{{ shape.originX }}" attr.cy="{{ shape.originY }}" attr.r="{{ shape.r }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:circle>
 

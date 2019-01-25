@@ -1,9 +1,8 @@
 <ng-template #shapeTemplate>
-    <svg:rect attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.originX }}" attr.y="{{ shape.originY }}"
-        attr.width="{{ shape.width }}" attr.height="{{ shape.height }}" [ngStyle]="setStyles()">
+    <svg:rect attr.id="{{shape.shapeProperties.name}}" class="draggable" attr.x="{{ shape.originX }}" attr.y="{{ shape.originY }}" attr.width="{{ shape.width }}" attr.height="{{ shape.height }}" [ngStyle]="setStyles()">
         <title>{{ shape.shapeProperties.name }}</title>
     </svg:rect>
-    <svg:g *ngIf="isSelected">
+    <!-- <svg:g *ngIf="isSelected">
         <svg:rect attr.x="{{ shape.originX - 2 }}" attr.y="{{ shape.originY - 2 }}" width="4" height="4" style="stroke: green; stroke-width: 1; fill:green" />
         <svg:rect attr.x="{{ shape.originX + shape.width - 2 }}" attr.y="{{ shape.originY - 2 }}" width="4" height="4"
             style="stroke: green; stroke-width: 1; fill:green" />
@@ -11,5 +10,5 @@
             style="stroke: green; stroke-width: 1; fill:green" />
         <svg:rect attr.x="{{ shape.originX + shape.width - 2 }}" attr.y="{{ shape.originY + shape.height - 2 }}" width="4"
             height="4" style="stroke: green; stroke-width: 1; fill:green" />
-    </svg:g>
+    </svg:g> -->
 </ng-template>
