@@ -11,6 +11,34 @@ import { Field } from 'dynaform';
     styleUrls: ['./text.component.css']
 })
 export class TextComponent extends ShapeComponent implements OnInit {
+
+    formFields: Field[] = [
+        {
+            name: 'name',
+            label: 'Name:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'y',
+            label: 'Y:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'value',
+            label: 'Text:',
+            type: 'input',
+            inputType: 'text',
+        },
+    ];
+
     constructor() {
         super();
         console.log('TextComponent constructor');
@@ -20,47 +48,6 @@ export class TextComponent extends ShapeComponent implements OnInit {
 
     ngOnInit() {
         console.log('TextComponent ngOnInit');
-    }
-
-    getFormFields(): Field[] {
-        var formFields: Field[] = [];
-        if (this.shape instanceof TextBox) {
-            formFields = [
-                {
-                    name: 'name',
-                    label: 'Name:',
-                    type: 'input',
-                    inputType: 'text',
-                    value: this.shape.shapeProperties.name
-                },
-                {
-                    name: 'x',
-                    label: 'X:',
-                    type: 'input',
-                    inputType: 'text',
-                    value: this.shape.originX
-                },
-                {
-                    name: 'y',
-                    label: 'Y:',
-                    type: 'input',
-                    inputType: 'text',
-                    value: this.shape.originY
-                },
-                {
-                    name: 'value',
-                    label: 'Text:',
-                    type: 'input',
-                    inputType: 'text',
-                    value: this.shape.value
-                },
-                {
-                    type: "button",
-                    label: "Submit"
-                }
-            ];
-        }
-        return formFields;
     }
 
     updateShapeProperties(value: any) {

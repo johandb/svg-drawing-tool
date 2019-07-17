@@ -11,6 +11,7 @@ import { Field } from 'dynaform';
     styleUrls: ['./image.component.css']
 })
 export class ImageComponent extends ShapeComponent implements OnInit {
+
     formFields: Field[] = [
         {
             name: 'x',

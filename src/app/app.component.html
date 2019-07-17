@@ -90,45 +90,6 @@
                             <div class="row nopadding">
                                 <div class="col-md-12">
                                     <dynamic-form [fields]="formFields" (submit)="submit($event)"></dynamic-form>
-                                    <!-- <form #shapeForm="ngForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input class="form-control" type="text" [(ngModel)]="shapeProperties.name"
-                                                name="name" value="{{shapeProperties.name}}" />
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" [(ngModel)]="shapeProperties.stroke" name="stroke"
-                                                    checked="{{shapeProperties.stroke}}">
-                                                Stroke</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control color-text" [(ngModel)]="shapeProperties.strokeColor"
-                                                name="strokeColor" value="{{shapeProperties.strokeColor}}"
-                                                [(colorPicker)]="shapeProperties.strokeColor" [cpOKButton]="true"
-                                                [cpCancelButton]="true" [style.background]="shapeProperties.strokeColor"
-                                                [cpOutputFormat]="'hex'" />
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" [(ngModel)]="shapeProperties.fill" name="fill"
-                                                    checked="shapeProperties.fill">
-                                                Fill</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control color-text" [(ngModel)]="shapeProperties.fillColor"
-                                                name="fillColor" value="{{shapeProperties.fillColor}}" [(colorPicker)]="shapeProperties.fillColor"
-                                                [cpOKButton]="true" [cpCancelButton]="true" [style.background]="shapeProperties.fillColor"
-                                                [cpOutputFormat]="'hex'" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputState">Size in px</label>
-                                            <select id="inputState" class="form-control" [(ngModel)]="shapeProperties.strokeWidth"
-                                                name="strokeWidth" value="{{shapeProperties.strokeWidth}}">
-                                                <ng-container *ngFor="let i of [0, 1,2,3,4,5,6,7,8,9,10]">
-                                                    <option>{{ i }}</option>
-                                                </ng-container>
-                                            </select>
-                                        </div>
-                                    </form> -->
                                 </div>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ import { Field } from 'dynaform';
     styleUrls: ['./square.component.css']
 })
 export class SquareComponent extends ShapeComponent implements OnInit {
+
     formFields: Field[] = [
         {
             name: 'x',

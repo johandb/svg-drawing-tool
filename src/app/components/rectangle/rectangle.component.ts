@@ -11,10 +11,18 @@ import { Field } from 'dynaform';
     styleUrls: ['./rectangle.component.css']
 })
 export class RectangleComponent extends ShapeComponent implements OnInit {
+
     formFields: Field[] = [
         {
             name: 'x',
             label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+        {
+            name: 'y',
+            label: 'Y:',
             type: 'input',
             inputType: 'text',
             value: ''

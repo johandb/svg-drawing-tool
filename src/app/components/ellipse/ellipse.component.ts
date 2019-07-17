@@ -12,6 +12,33 @@ import { Field } from 'dynaform';
 })
 export class EllipseComponent extends ShapeComponent implements OnInit {
 
+    formFields: Field[] = [
+        {
+            name: 'x',
+            label: 'X:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'y',
+            label: 'Y:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'rx',
+            label: 'RX:',
+            type: 'input',
+            inputType: 'text',
+        },
+        {
+            name: 'ry',
+            label: 'RY:',
+            type: 'input',
+            inputType: 'text',
+        },
+    ];
+
     constructor() {
         super();
         console.log('EllipseComponent constructor');
@@ -21,41 +48,6 @@ export class EllipseComponent extends ShapeComponent implements OnInit {
 
     ngOnInit() {
         console.log('EllipseComponent ngOnInit');
-    }
-
-    getFormFields(): Field[] {
-        var ellipse = <Ellipse>this.shape;
-        var formFields: Field[] = [
-            {
-                name: 'x',
-                label: 'X:',
-                type: 'input',
-                inputType: 'text',
-                value: ellipse.originX
-            },
-            {
-                name: 'y',
-                label: 'Y:',
-                type: 'input',
-                inputType: 'text',
-                value: ellipse.originY
-            },
-            {
-                name: 'rx',
-                label: 'RX:',
-                type: 'input',
-                inputType: 'text',
-                value: ellipse.rx
-            },
-            {
-                name: 'ry',
-                label: 'RY:',
-                type: 'input',
-                inputType: 'text',
-                value: ellipse.ry
-            },
-        ];
-        return formFields;
     }
 
     setStyles() {

@@ -12,10 +12,18 @@ import { Field } from 'dynaform';
     styleUrls: ['./line.component.css']
 })
 export class LineComponent extends ShapeComponent implements OnInit {
+
     formFields: Field[] = [
         {
             name: 'x',
             label: 'X:',
+            type: 'input',
+            inputType: 'text',
+            value: ''
+        },
+        {
+            name: 'y',
+            label: 'Y:',
             type: 'input',
             inputType: 'text',
             value: ''
